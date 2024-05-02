@@ -27,6 +27,7 @@
     "@ngrx/eslint-plugin": "17.2.0",
     "@ngrx/store": "^17.2.0",
     "@ngrx/store-devtools": "^17.2.0",
+    "@spartan-ng/ui-core": "0.0.1-alpha.347",
     "express": "^4.18.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
