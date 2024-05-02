@@ -1,23 +1,27 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Date, HydratedDocument } from 'mongoose';
+import { v4 as uuidv4 } from 'uuid';
 
 export type UserDocument = HydratedDocument<User>;
 
 @Schema()
 export class User {
-  @Prop()
+  @Prop({ default: uuidv4 })
+  userId: string;
+
+  @Prop({ required: true })
   email: string;
 
-  @Prop()
+  @Prop({ required: true })
   password: string;
 
-  @Prop()
+  @Prop({ required: true })
   firstname: string;
 
-  @Prop()
+  @Prop({ required: true })
   lastname: string;
 
-  @Prop()
+  @Prop({ default: Date.now ,type: Date})
   createdAt: Date
 
 }
