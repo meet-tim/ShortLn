@@ -44,6 +44,9 @@ importers:
       '@ngrx/store':
         specifier: ^17.2.0
         version: 17.2.0(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1)
+      '@ngrx/store-devtools':
+        specifier: ^17.2.0
+        version: 17.2.0(@ngrx/store@17.2.0(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(rxjs@7.8.1)
       express:
         specifier: ^4.18.2
         version: 4.19.2
@@ -1209,6 +1212,12 @@ packages:
     resolution: {integrity: sha512-EbO8AONuQ6zo2v/mPyBOi4y0CTAp1x4Z+bx7ZF+Pd8BL5ma53BTCL1TmzaeK5zPUe0yApudLk9/ZbHXPnVox5A==}
     peerDependencies:
       rxjs: ^6.5.3 || ^7.4.0
+
+  '@ngrx/store-devtools@17.2.0':
+    resolution: {integrity: sha512-ig0qr6hMexZGnrlxfHvZmu5CanRjH7hhx60XUbB5BdBvWJIIRaWKPLcsniiDUhljAD87gvzrrilbCTiML38+CA==}
+    peerDependencies:
+      '@ngrx/store': 17.2.0
+      rxjs: ^6.5.3 || ^7.5.0
 
   '@ngrx/store@17.2.0':
     resolution: {integrity: sha512-7wKgZ59B/6yQSvvsU0DQXipDqpkAXv7LwcXLD5Ww7nvqN0fQoRPThMh4+Wv55DCJhE0bQc1NEMciLA47uRt7Wg==}
@@ -5337,6 +5346,12 @@ snapshots:
 
   '@ngrx/operators@17.0.0-beta.0(rxjs@7.8.1)':
     dependencies:
+      rxjs: 7.8.1
+      tslib: 2.6.2
+
+  '@ngrx/store-devtools@17.2.0(@ngrx/store@17.2.0(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(rxjs@7.8.1)':
+    dependencies:
+      '@ngrx/store': 17.2.0(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1)
       rxjs: 7.8.1
       tslib: 2.6.2
 
