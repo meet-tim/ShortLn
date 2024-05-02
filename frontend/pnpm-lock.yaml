@@ -21,7 +21,7 @@ importers:
         specifier: ^17.0.0
         version: 17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))
       '@angular/core':
-        specifier: ^17.0.0
+        specifier: ^17.3.0
         version: 17.3.7(rxjs@7.8.1)(zone.js@0.14.5)
       '@angular/forms':
         specifier: ^17.0.0
@@ -53,9 +53,18 @@ importers:
       '@ngrx/store-devtools':
         specifier: ^17.2.0
         version: 17.2.0(@ngrx/store@17.2.0(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(rxjs@7.8.1)
+      '@spartan-ng/ui-avatar-brain':
+        specifier: 0.0.1-alpha.347
+        version: 0.0.1-alpha.347(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(clsx@1.2.1)
       '@spartan-ng/ui-core':
         specifier: 0.0.1-alpha.347
         version: 0.0.1-alpha.347(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(clsx@1.2.1)(rxjs@7.8.1)(tailwind-merge@2.3.0)(tailwindcss-animate@1.0.7(tailwindcss@3.4.3(ts-node@10.9.1(@types/node@18.19.31)(typescript@5.2.2))))(tailwindcss@3.4.3(ts-node@10.9.1(@types/node@18.19.31)(typescript@5.2.2)))
+      class-variance-authority:
+        specifier: ^0.6.0
+        version: 0.6.1
+      clsx:
+        specifier: ^1.2.1
+        version: 1.2.1
       express:
         specifier: ^4.18.2
         version: 4.19.2
@@ -138,9 +147,15 @@ importers:
       postcss:
         specifier: ^8.4.38
         version: 8.4.38
+      tailwind-merge:
+        specifier: ^2.2.0
+        version: 2.3.0
       tailwindcss:
         specifier: ^3.4.3
         version: 3.4.3(ts-node@10.9.1(@types/node@18.19.31)(typescript@5.2.2))
+      tailwindcss-animate:
+        specifier: ^1.0.6
+        version: 1.0.7(tailwindcss@3.4.3(ts-node@10.9.1(@types/node@18.19.31)(typescript@5.2.2)))
       typescript:
         specifier: ~5.2.2
         version: 5.2.2
@@ -1712,6 +1727,13 @@ packages:
     peerDependencies:
       tslib: ^2.3.0
 
+  '@spartan-ng/ui-avatar-brain@0.0.1-alpha.347':
+    resolution: {integrity: sha512-vWWk8tt+TU8B327AdHDtqUkEojjhaiLauOFwyKKFllkV/KMtidoCkalwoe0OvSRBJ806BI5d2zWpDZjH3dzQag==}
+    peerDependencies:
+      '@angular/common': ^17.3.0
+      '@angular/core': ^17.3.0
+      clsx: ^1.2.1
+
   '@spartan-ng/ui-core@0.0.1-alpha.347':
     resolution: {integrity: sha512-DNznHGPYTFMuKcm1DQsTR4t/zPkYuGvQru2aWw17pVn7+2UB+9BdA4W4uL/WOEj8kFjRvhBq1OSoJabecEEfsQ==}
     peerDependencies:
@@ -2385,6 +2407,9 @@ packages:
   ci-info@3.9.0:
     resolution: {integrity: sha512-NIxF55hv4nSqQswkAeiOi1r83xy8JldOFDTWiug55KBu9Jnblncd2U6ViHmYgHf01TPZS77NJBhBMKdWj9HQMQ==}
     engines: {node: '>=8'}
+
+  class-variance-authority@0.6.1:
+    resolution: {integrity: sha512-eurOEGc7YVx3majOrOb099PNKgO3KnKSApOprXI4BTq6bcfbqbQXPN2u+rPPmIJ2di23bMwhk0SxCCthBmszEQ==}
 
   clean-stack@2.2.0:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==}
@@ -8207,6 +8232,13 @@ snapshots:
       - vue-template-compiler
       - webpack-cli
 
+  '@spartan-ng/ui-avatar-brain@0.0.1-alpha.347(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(clsx@1.2.1)':
+    dependencies:
+      '@angular/common': 17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1)
+      '@angular/core': 17.3.7(rxjs@7.8.1)(zone.js@0.14.5)
+      clsx: 1.2.1
+      tslib: 2.6.2
+
   '@spartan-ng/ui-core@0.0.1-alpha.347(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(clsx@1.2.1)(rxjs@7.8.1)(tailwind-merge@2.3.0)(tailwindcss-animate@1.0.7(tailwindcss@3.4.3(ts-node@10.9.1(@types/node@18.19.31)(typescript@5.2.2))))(tailwindcss@3.4.3(ts-node@10.9.1(@types/node@18.19.31)(typescript@5.2.2)))':
     dependencies:
       '@angular/core': 17.3.7(rxjs@7.8.1)(zone.js@0.14.5)
@@ -9051,6 +9083,10 @@ snapshots:
   chrome-trace-event@1.0.3: {}
 
   ci-info@3.9.0: {}
+
+  class-variance-authority@0.6.1:
+    dependencies:
+      clsx: 1.2.1
 
   clean-stack@2.2.0: {}
 
@@ -11470,7 +11506,7 @@ snapshots:
 
   regenerator-transform@0.15.2:
     dependencies:
-      '@babel/runtime': 7.24.0
+      '@babel/runtime': 7.24.5
 
   regex-parser@2.3.0: {}
 
