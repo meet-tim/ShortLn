@@ -50,3 +50,9 @@
   --input: 240 3.7% 15.9%;
   --ring: 240 4.9% 83.9%;
 }
+
+* {
+  @apply bg-white dark:bg-black text-dark-01 
+  dark:text-white  transition-colors duration-300 
+  ease-in-out scroll-smooth;
+}
