@@ -1,0 +1,7 @@
+@if (globalWindow){
+<div [class]="themeStore.currentTheme() + ' min-h-screen'">
+  <div class="bg-white dark:bg-black min-h-screen text-dark-01 dark:text-white">
+    <ng-content />
+  </div>
+</div>
+}
