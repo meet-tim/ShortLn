@@ -1,4 +1,5 @@
-import { afterNextRender, Component, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { afterNextRender, Component, inject, PLATFORM_ID } from '@angular/core';
 import { ThemeStore } from '../../store/theme/theme.store';
 
 @Component({
@@ -10,11 +11,12 @@ import { ThemeStore } from '../../store/theme/theme.store';
 })
 export class ThemeProviderComponent {
   themeStore = inject(ThemeStore);
-  globalWindow!: Window;
+  platformId = inject(PLATFORM_ID);
+  isBrowser: boolean;
 
   constructor() {
+    this.isBrowser = isPlatformBrowser(this.platformId);
     afterNextRender(() => {
-      this.globalWindow = window;
       const theme = window.localStorage.getItem('theme');
       if (theme) {
         this.themeStore.setTheme(
