@@ -18,7 +18,7 @@ importers:
         specifier: ^17.3.6
         version: 17.3.6(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1)
       '@angular/common':
-        specifier: ^17.0.0
+        specifier: ^17.3.0
         version: 17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1)
       '@angular/compiler':
         specifier: ^17.0.0
@@ -27,7 +27,7 @@ importers:
         specifier: ^17.3.0
         version: 17.3.7(rxjs@7.8.1)(zone.js@0.14.5)
       '@angular/forms':
-        specifier: ^17.0.0
+        specifier: ^17.3.0
         version: 17.3.7(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(@angular/platform-browser@17.3.7(@angular/animations@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)))(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)))(rxjs@7.8.1)
       '@angular/platform-browser':
         specifier: ^17.0.0
@@ -44,6 +44,12 @@ importers:
       '@angular/ssr':
         specifier: ^17.0.6
         version: 17.3.6(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))
+      '@ng-icons/core':
+        specifier: ^25.1.0
+        version: 25.6.1
+      '@ng-icons/lucide':
+        specifier: ^26.3.0
+        version: 26.5.0
       '@ngrx/effects':
         specifier: ^17.2.0
         version: 17.2.0(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(@ngrx/store@17.2.0(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(rxjs@7.8.1)
@@ -62,9 +68,15 @@ importers:
       '@spartan-ng/ui-avatar-brain':
         specifier: 0.0.1-alpha.347
         version: 0.0.1-alpha.347(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(clsx@1.2.1)
+      '@spartan-ng/ui-checkbox-brain':
+        specifier: 0.0.1-alpha.347
+        version: 0.0.1-alpha.347(@angular/cdk@17.3.6(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(@angular/forms@17.3.7(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(@angular/platform-browser@17.3.7(@angular/animations@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)))(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)))(rxjs@7.8.1))(@spartan-ng/ui-core@0.0.1-alpha.347(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(clsx@1.2.1)(rxjs@7.8.1)(tailwind-merge@2.3.0)(tailwindcss-animate@1.0.7(tailwindcss@3.4.3(ts-node@10.9.2(@types/node@18.19.31)(typescript@5.2.2))))(tailwindcss@3.4.3(ts-node@10.9.2(@types/node@18.19.31)(typescript@5.2.2))))
       '@spartan-ng/ui-core':
         specifier: 0.0.1-alpha.347
         version: 0.0.1-alpha.347(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(clsx@1.2.1)(rxjs@7.8.1)(tailwind-merge@2.3.0)(tailwindcss-animate@1.0.7(tailwindcss@3.4.3(ts-node@10.9.2(@types/node@18.19.31)(typescript@5.2.2))))(tailwindcss@3.4.3(ts-node@10.9.2(@types/node@18.19.31)(typescript@5.2.2)))
+      '@spartan-ng/ui-label-brain':
+        specifier: 0.0.1-alpha.347
+        version: 0.0.1-alpha.347(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(@angular/forms@17.3.7(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(@angular/platform-browser@17.3.7(@angular/animations@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)))(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)))(rxjs@7.8.1))
       class-variance-authority:
         specifier: ^0.6.0
         version: 0.6.1
@@ -1457,6 +1469,12 @@ packages:
     resolution: {integrity: sha512-/gKJun8NNiWGZJkGzI/Ragc53cOdcLNdzjLaIa+GEjguQs0ulsurx8WN0jijdK9yPqDvziX995sMRLyLt1uZMQ==}
     engines: {node: '>= 0.4'}
 
+  '@ng-icons/core@25.6.1':
+    resolution: {integrity: sha512-o6vCttlzXvDZRYiOKOULr7fsX8gY/DwwxzBSrBQzwa/at+pC0xRoe6uczJ9Ato+y1EDWP/PlrEMAQfvokBA6tQ==}
+
+  '@ng-icons/lucide@26.5.0':
+    resolution: {integrity: sha512-rW6iZo2LBlFvnpBLWs400mrKn/34PKt5R+Yfd6ZJz9lxq2TMJfNeJv/V4ylG9vYG3RkPa+KEJ+Q6/8IOceT0NA==}
+
   '@ngrx/effects@17.2.0':
     resolution: {integrity: sha512-tXDJNsuBtbvI/7+vYnkDKKpUvLbopw1U5G6LoPnKNrbTPsPcUGmCqF5Su/ZoRN3BhXjt2j+eoeVdpBkxdxMRgg==}
     peerDependencies:
@@ -1822,6 +1840,15 @@ packages:
       '@angular/core': ^17.3.0
       clsx: ^1.2.1
 
+  '@spartan-ng/ui-checkbox-brain@0.0.1-alpha.347':
+    resolution: {integrity: sha512-QdkNvjnh/V9lw/dOMhEiVuw/4mEKECAAX2lKCmZNzNAXpOUHHvyYmGhNNvCzkrycDwfOrDdca9W0x6QUKyyS+Q==}
+    peerDependencies:
+      '@angular/cdk': ^17.3.0
+      '@angular/common': ^17.3.0
+      '@angular/core': ^17.3.0
+      '@angular/forms': ^17.3.0
+      '@spartan-ng/ui-core': 0.0.1-alpha.347
+
   '@spartan-ng/ui-core@0.0.1-alpha.347':
     resolution: {integrity: sha512-DNznHGPYTFMuKcm1DQsTR4t/zPkYuGvQru2aWw17pVn7+2UB+9BdA4W4uL/WOEj8kFjRvhBq1OSoJabecEEfsQ==}
     peerDependencies:
@@ -1831,6 +1858,13 @@ packages:
       tailwind-merge: ^2.2.0
       tailwindcss: ^3.0.2
       tailwindcss-animate: ^1.0.6
+
+  '@spartan-ng/ui-label-brain@0.0.1-alpha.347':
+    resolution: {integrity: sha512-ASIA0gpJ6cufOj9p0tpfbtlaGftdy0zLwS82/0HyHBz/ZFme/by43mbzxZc8snhrroCn8CXjs9NMsBiZTRYQvQ==}
+    peerDependencies:
+      '@angular/common': ^17.3.0
+      '@angular/core': ^17.3.0
+      '@angular/forms': ^17.3.0
 
   '@tootallnate/once@2.0.0':
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
@@ -8199,6 +8233,14 @@ snapshots:
     dependencies:
       call-bind: 1.0.7
 
+  '@ng-icons/core@25.6.1':
+    dependencies:
+      tslib: 2.6.2
+
+  '@ng-icons/lucide@26.5.0':
+    dependencies:
+      tslib: 2.6.2
+
   '@ngrx/effects@17.2.0(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(@ngrx/store@17.2.0(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(rxjs@7.8.1)':
     dependencies:
       '@angular/core': 17.3.7(rxjs@7.8.1)(zone.js@0.14.5)
@@ -8946,6 +8988,15 @@ snapshots:
       clsx: 1.2.1
       tslib: 2.6.2
 
+  ? '@spartan-ng/ui-checkbox-brain@0.0.1-alpha.347(@angular/cdk@17.3.6(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(@angular/forms@17.3.7(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(@angular/platform-browser@17.3.7(@angular/animations@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)))(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)))(rxjs@7.8.1))(@spartan-ng/ui-core@0.0.1-alpha.347(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(clsx@1.2.1)(rxjs@7.8.1)(tailwind-merge@2.3.0)(tailwindcss-animate@1.0.7(tailwindcss@3.4.3(ts-node@10.9.2(@types/node@18.19.31)(typescript@5.2.2))))(tailwindcss@3.4.3(ts-node@10.9.2(@types/node@18.19.31)(typescript@5.2.2))))'
+  : dependencies:
+      '@angular/cdk': 17.3.6(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1)
+      '@angular/common': 17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1)
+      '@angular/core': 17.3.7(rxjs@7.8.1)(zone.js@0.14.5)
+      '@angular/forms': 17.3.7(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(@angular/platform-browser@17.3.7(@angular/animations@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)))(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)))(rxjs@7.8.1)
+      '@spartan-ng/ui-core': 0.0.1-alpha.347(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(clsx@1.2.1)(rxjs@7.8.1)(tailwind-merge@2.3.0)(tailwindcss-animate@1.0.7(tailwindcss@3.4.3(ts-node@10.9.2(@types/node@18.19.31)(typescript@5.2.2))))(tailwindcss@3.4.3(ts-node@10.9.2(@types/node@18.19.31)(typescript@5.2.2)))
+      tslib: 2.6.2
+
   '@spartan-ng/ui-core@0.0.1-alpha.347(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(clsx@1.2.1)(rxjs@7.8.1)(tailwind-merge@2.3.0)(tailwindcss-animate@1.0.7(tailwindcss@3.4.3(ts-node@10.9.2(@types/node@18.19.31)(typescript@5.2.2))))(tailwindcss@3.4.3(ts-node@10.9.2(@types/node@18.19.31)(typescript@5.2.2)))':
     dependencies:
       '@angular/core': 17.3.7(rxjs@7.8.1)(zone.js@0.14.5)
@@ -8954,6 +9005,13 @@ snapshots:
       tailwind-merge: 2.3.0
       tailwindcss: 3.4.3(ts-node@10.9.2(@types/node@18.19.31)(typescript@5.2.2))
       tailwindcss-animate: 1.0.7(tailwindcss@3.4.3(ts-node@10.9.2(@types/node@18.19.31)(typescript@5.2.2)))
+      tslib: 2.6.2
+
+  '@spartan-ng/ui-label-brain@0.0.1-alpha.347(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(@angular/forms@17.3.7(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(@angular/platform-browser@17.3.7(@angular/animations@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)))(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)))(rxjs@7.8.1))':
+    dependencies:
+      '@angular/common': 17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1)
+      '@angular/core': 17.3.7(rxjs@7.8.1)(zone.js@0.14.5)
+      '@angular/forms': 17.3.7(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(@angular/platform-browser@17.3.7(@angular/animations@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)))(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)))(rxjs@7.8.1)
       tslib: 2.6.2
 
   '@tootallnate/once@2.0.0': {}

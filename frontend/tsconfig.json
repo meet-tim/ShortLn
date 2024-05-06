@@ -31,6 +31,15 @@
       ],
       "@spartan-ng/ui-input-helm": [
         "./src/app/core/components/ui-input-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-checkbox-helm": [
+        "./src/app/core/components/ui-checkbox-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-icon-helm": [
+        "./src/app/core/components/ui-icon-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-label-helm": [
+        "./src/app/core/components/ui-label-helm/src/index.ts"
       ]
     }
   },

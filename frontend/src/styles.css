@@ -52,7 +52,14 @@
 }
 
 * {
-  @apply bg-white dark:bg-black text-dark-01 
-  dark:text-white  transition-colors duration-300 
-  ease-in-out scroll-smooth;
+  @apply text-dark-01 dark:text-white  transition-colors 
+  duration-300 ease-in-out scroll-smooth;
+}
+
+html {
+  @apply bg-white dark:bg-black;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#fd685d] to-[#4081ec];
 }

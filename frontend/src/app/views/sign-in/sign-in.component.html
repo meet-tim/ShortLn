@@ -1,5 +1,5 @@
 <main class="min-h-screen">
-  <div class="flex flex-col h-screen py-[70px] px-[100px]">
+  <div class="flex flex-row h-screen py-[70px] px-[100px]">
     <div class="w-1/2 h-full grow rounded-[34px] overflow-hidden">
       <img
         src="./assets/images/signInPage.png"
@@ -7,11 +7,83 @@
         class="h-full w-full object-fill"
       />
     </div>
-    <div class="w-1/2">
-      <div class="px-[146px]">
-        <div>
-          <h1>Sign in to ShortLn</h1>
-          <h2>Welcome back to ShortLnk</h2>
+    <div class="w-1/2 h-fit relative top-1/2 -translate-y-1/2">
+      <div class="pl-[146px] flex flex-col items-center max-w-lg">
+        <div class="mb-28">
+          <h1 class="text-4xl text-center mb-6 font-medium">
+            Sign in to
+            <span class="text-gradient">ShortLnk</span>
+          </h1>
+          <h2 class="text-center">Welcome back to ShortLnk</h2>
+        </div>
+        <div class="w-full">
+          <form (submit)="onFormSubmit($event)" [formGroup]="singInForm">
+            <div class="mb-8 w-full">
+              <input
+                hlmInput
+                type="email"
+                name="email"
+                id="email"
+                [formControl]="singInForm.controls.email"
+                placeholder="Email"
+                class="w-full"
+              />
+              <span
+                *ngIf="
+                  (singInForm.controls.email.dirty ||
+                    singInForm.controls.email.touched) &&
+                  singInForm.controls.email.invalid
+                "
+                class="text-red-500 text-sm mt-2 block"
+                >Enter a valid email
+              </span>
+            </div>
+            <div class="w-full mb-3">
+              <input
+                hlmInput
+                type="password"
+                name="password"
+                id="password"
+                [formControl]="singInForm.controls.password"
+                placeholder="Password"
+                class="w-full"
+              />
+              <span
+                *ngIf="
+                  (singInForm.controls.password.dirty ||
+                    singInForm.controls.password.touched) &&
+                  singInForm.controls.password.invalid
+                "
+                class="text-red-500 text-sm mt-2 block"
+                >Password is required
+              </span>
+            </div>
+            <div class="flex flex-row justify-between mb-28">
+              <span class="flex items-center" hlmLabel>
+                <hlm-checkbox
+                  class="mr-2"
+                  (changed)="onCheckboxChange($event)"
+                />
+                Remember me
+              </span>
+              <span>
+                <a
+                  href="/"
+                  class="text-blue-500 text-sm hover:underline hover:underline-offset-2"
+                  >Forgot password?</a
+                >
+              </span>
+            </div>
+            <div class="w-full">
+              <button
+                type="submit"
+                hlmBtn
+                class="bg-blue-500 hover:bg-blue-800 w-full text-white"
+              >
+                Login
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
