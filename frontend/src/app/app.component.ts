@@ -14,7 +14,7 @@ import { ThemeProviderComponent } from './core/components/theme-provider/theme-p
     HlmButtonDirective,
     ThemeProviderComponent,
   ],
-  providers: [ThemeStore],
+  providers: [],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
