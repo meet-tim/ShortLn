@@ -52,12 +52,12 @@
 }
 
 * {
-  @apply text-dark-01 dark:text-white  transition-colors 
+  @apply transition-colors 
   duration-300 ease-in-out scroll-smooth;
 }
 
 html {
-  @apply bg-white dark:bg-black;
+  @apply bg-white dark:bg-black text-dark-01 dark:text-white;
 }
 
 .text-gradient {
