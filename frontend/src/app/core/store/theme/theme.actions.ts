@@ -5,8 +5,9 @@ import { produce } from 'immer';
 export function setTheme(
   theme: 'light' | 'dark'
 ): PartialStateUpdater<IThemeState> {
-  return (baseState) =>
-    produce(baseState, (draft) => {
+  return (baseState) => {
+    return produce(baseState, (draft) => {
       draft.currentTheme = theme;
     });
+  };
 }

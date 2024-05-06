@@ -25,11 +25,7 @@ export class SignInComponent implements OnInit, OnDestroy {
   formBuilder = inject(FormBuilder);
 
   singInForm = this.formBuilder.group({
-    email: [
-      '',
-      [Validators.required, Validators.email],
-      { updateOn: 'submit' },
-    ],
+    email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
   });
   signInFormSubscription!: Subscription;
