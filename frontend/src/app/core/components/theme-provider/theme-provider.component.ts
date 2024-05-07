@@ -6,7 +6,7 @@ import {
   inject,
   PLATFORM_ID,
 } from '@angular/core';
-import { ThemeService } from '../../services/theme.service';
+import { ThemeService } from '../../services/theme/theme.service';
 import { ThemeStore } from '../../store/theme/theme.store';
 
 @Component({
@@ -42,7 +42,6 @@ export class ThemeProviderComponent {
   }
 
   onThemeToggleClick() {
-    console.log('Theme toggle clicked');
     this.themeService.changeTheme();
   }
 }
