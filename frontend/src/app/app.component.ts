@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimental';
+import { environment } from '../environments/environment';
+import { ThemeProviderComponent } from './core/components/theme-provider/theme-provider.component';
 import { HlmButtonDirective } from './core/components/ui-button-helm/src/lib/hlm-button.directive';
 import { ThemeStore } from './core/store/theme/theme.store';
-import { ThemeProviderComponent } from './core/components/theme-provider/theme-provider.component';
-import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimental';
 
 @Component({
   selector: 'app-root',
@@ -15,14 +16,15 @@ import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimen
     HlmButtonDirective,
     ThemeProviderComponent,
     AngularQueryDevtools,
+    ...(environment.enableAngularQueryDevtools ? [AngularQueryDevtools] : []),
   ],
   providers: [],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'frontend';
   themeStore = inject(ThemeStore);
+  environment = environment;
 
   onBtnClick() {
     console.log('Button clicked');
