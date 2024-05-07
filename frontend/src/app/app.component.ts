@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { HlmButtonDirective } from './core/components/ui-button-helm/src/lib/hlm-button.directive';
 import { ThemeStore } from './core/store/theme/theme.store';
 import { ThemeProviderComponent } from './core/components/theme-provider/theme-provider.component';
+import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimental';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ import { ThemeProviderComponent } from './core/components/theme-provider/theme-p
     RouterOutlet,
     HlmButtonDirective,
     ThemeProviderComponent,
+    AngularQueryDevtools,
   ],
   providers: [],
   templateUrl: './app.component.html',
