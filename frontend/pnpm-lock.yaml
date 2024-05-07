@@ -95,6 +95,9 @@ importers:
       immer:
         specifier: ^10.1.1
         version: 10.1.1
+      ngx-sonner:
+        specifier: ^0.3.4
+        version: 0.3.4(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))
       rxjs:
         specifier: ~7.8.0
         version: 7.8.1
@@ -4436,6 +4439,12 @@ packages:
 
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
+
+  ngx-sonner@0.3.4:
+    resolution: {integrity: sha512-kcIu0fQRQo1DGP2BDSrVwg+AU3hBHwppP3f8AtaPbV+w6gW79d/6HFCAOglpBQzVSTbwJWOi/5bMGcg7pT9TCw==}
+    peerDependencies:
+      '@angular/common': '>=17.1.0'
+      '@angular/core': '>=17.1.0'
 
   nice-napi@1.0.2:
     resolution: {integrity: sha512-px/KnJAJZf5RuBGcfD+Sp2pAKq0ytz8j+1NehvgIGFkvtvFrDM3T8E4x/JJODXK9WZow8RRGrbA9QQ3hs+pDhA==}
@@ -12266,6 +12275,12 @@ snapshots:
   negotiator@0.6.3: {}
 
   neo-async@2.6.2: {}
+
+  ngx-sonner@0.3.4(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)):
+    dependencies:
+      '@angular/common': 17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1)
+      '@angular/core': 17.3.7(rxjs@7.8.1)(zone.js@0.14.5)
+      tslib: 2.6.2
 
   nice-napi@1.0.2:
     dependencies:

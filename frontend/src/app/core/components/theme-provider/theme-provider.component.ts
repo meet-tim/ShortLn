@@ -42,7 +42,6 @@ export class ThemeProviderComponent {
   }
 
   onThemeToggleClick() {
-    console.log('Theme toggle clicked');
     this.themeService.changeTheme();
   }
 }
