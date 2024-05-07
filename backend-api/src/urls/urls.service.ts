@@ -8,14 +8,15 @@ import { Model } from 'mongoose';
 export class UrlsService {
     constructor(@InjectModel("Url") private readonly urlModel: Model<Url>) {}
 
-    async findAll(): Promise<Url[]> {
-      return this.urlModel.find().exec();
+    async findAll(email:string): Promise<Url[]> {
+      return this.urlModel.find({email}).exec();
     }
 
-    async shortenUrl(url:string): Promise<Url>{
+    async shortenUrl(url:string,email:string): Promise<Url>{
         const urlObj = new Url();
         urlObj.originalUrl = url;
         urlObj.shortUrl = this.generateCode(5)
+        urlObj.owner = email
         const createdUrl = new this.urlModel(urlObj)
         return createdUrl.save();
     }
