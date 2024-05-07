@@ -12,11 +12,12 @@ export class Url {
   
   @Prop({ required: true ,unique:true, type:String})
   originalUrl: string;
-
  
   @Prop({ required: true ,unique:true, type:String})
   shortUrl: string;
 
+  @Prop({ required: true ,unique:true, type:String})
+  owner: string;
 }
 
 export const urlsSchema = SchemaFactory.createForClass(Url);
