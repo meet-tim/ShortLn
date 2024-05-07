@@ -16,6 +16,14 @@ import { jwtDecode } from 'jwt-decode';
 export class AuthService {
   http = inject(HttpClient);
 
+  constructor() {
+    setInterval(() => {
+      if (this.isTokenExpired()) {
+        document.cookie = 'access_token';
+      }
+    }, 500);
+  }
+
   signIn(logInDetails: IUserLogInDetails): Promise<ILoginResponse> {
     return lastValueFrom<ILoginResponse>(
       this.http.post<ILoginResponse>(`${environment.apiUrl}/auth/login`, {
@@ -47,7 +55,7 @@ export class AuthService {
     }
   }
 
-  isTokenExpired() : boolean {
+  isTokenExpired(): boolean {
     const cookies = document.cookie.split(';');
     const token = cookies
       .find((cookie) => cookie.includes('access_token'))
