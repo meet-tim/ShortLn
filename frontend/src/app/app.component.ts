@@ -28,10 +28,4 @@ export class AppComponent {
   themeStore = inject(ThemeStore);
   environment = environment;
   isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-
-  onBtnClick() {
-    this.themeStore.setTheme(
-      this.themeStore.currentTheme() === 'light' ? 'dark' : 'light'
-    );
-  }
 }
