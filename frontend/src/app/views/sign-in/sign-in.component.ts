@@ -47,6 +47,7 @@ export class SignInComponent {
           onClick: () => null,
         },
       });
+      this.authService.setToken(data.access_token);
       this.router.navigate(['/links']);
     },
     onError: (error) => {

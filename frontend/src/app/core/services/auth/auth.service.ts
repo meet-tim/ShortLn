@@ -7,6 +7,14 @@ import {
   IUserSignUpDetails,
 } from './auth.interface';
 import { lastValueFrom } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
+
+interface decodedJwt {
+  sub: string;
+  email: string;
+  iat: number;
+  exp: number;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -34,8 +42,14 @@ export class AuthService {
     );
   }
 
-  // setToken(token: string) {
-  //   // set token in cookies, and make it httpOnly cookie
-  //   document.cookie = 'token';
-  // }
+  setToken(token: string) {
+    const decodedToken = jwtDecode<decodedJwt | null>(token);
+    if (decodedToken) {
+      document.cookie = `access_token=${token}; expires=${new Date(
+        decodedToken.exp * 1000
+      ).toUTCString()}; path=/; SameSite=Strict; Secure;`;
+    } else {
+      console.error('Token not set - Invalid token');
+    }
+  }
 }
