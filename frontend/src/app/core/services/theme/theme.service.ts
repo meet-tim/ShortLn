@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { ThemeStore } from '../store/theme/theme.store';
+import { ThemeStore } from '../../store/theme/theme.store';
 
 @Injectable({
   providedIn: 'root',
