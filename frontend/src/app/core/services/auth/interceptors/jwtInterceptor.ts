@@ -1,10 +1,14 @@
 import { HttpHandlerFn, HttpRequest } from '@angular/common/http';
 
 export function jwtInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn) {
-  console.log(req.url);
+  const cookies = document.cookie.split(';');
+  const token = cookies
+    .find((cookie) => cookie.includes('access_token'))
+    ?.split('=')[1];
+
   const authReq = req.clone({
     setHeaders: {
-      Authorization: `Bearer `,
+      Authorization: `Bearer ${token}`,
     },
   });
   return next(authReq);

@@ -5,16 +5,10 @@ import {
   IUserLogInDetails,
   ILoginResponse,
   IUserSignUpDetails,
+  decodedJwt,
 } from './auth.interface';
 import { lastValueFrom } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
-
-interface decodedJwt {
-  sub: string;
-  email: string;
-  iat: number;
-  exp: number;
-}
 
 @Injectable({
   providedIn: 'root',
@@ -51,5 +45,20 @@ export class AuthService {
     } else {
       console.error('Token not set - Invalid token');
     }
+  }
+
+  isTokenExpired() : boolean {
+    const cookies = document.cookie.split(';');
+    const token = cookies
+      .find((cookie) => cookie.includes('access_token'))
+      ?.split('=')[1];
+    if (!token) {
+      return true;
+    }
+    const decodedToken = jwtDecode<decodedJwt | null>(token);
+    if (!decodedToken) {
+      return true;
+    }
+    return decodedToken.exp * 1000 < Date.now();
   }
 }

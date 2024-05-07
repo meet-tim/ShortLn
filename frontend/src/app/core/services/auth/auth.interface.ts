@@ -13,3 +13,9 @@ export interface IUserSignUpDetails {
   firstname: string;
   lastname: string;
 }
+export interface decodedJwt {
+  sub: string;
+  email: string;
+  iat: number;
+  exp: number;
+}
