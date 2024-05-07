@@ -33,4 +33,9 @@ export class AuthService {
       })
     );
   }
+
+  // setToken(token: string) {
+  //   // set token in cookies, and make it httpOnly cookie
+  //   document.cookie = 'token';
+  // }
 }
