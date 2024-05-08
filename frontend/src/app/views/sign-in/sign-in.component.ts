@@ -30,7 +30,6 @@ import { AuthService } from '../../core/services/auth/auth.service';
 export class SignInComponent {
   private readonly formBuilder = inject(FormBuilder);
   private readonly authService = inject(AuthService);
-  private response!: string | Error;
   checkboxValue = false;
   router = inject(Router);
 
@@ -38,7 +37,6 @@ export class SignInComponent {
     mutationFn: (logInDetails: IUserLogInDetails) =>
       this.authService.signIn(logInDetails),
     onSuccess: (data) => {
-      this.response = data.access_token;
       toast('Sign in successful', {
         description:
           'You have successfully signed in 🎉🎉🎉 You will be redirected to the links page',
@@ -47,10 +45,10 @@ export class SignInComponent {
           onClick: () => null,
         },
       });
+      this.authService.setToken(data.access_token);
       this.router.navigate(['/links']);
     },
     onError: (error) => {
-      this.response = error;
       console.error(error);
       toast('Error logging you in', {
         description: 'Check your email and password and try again',

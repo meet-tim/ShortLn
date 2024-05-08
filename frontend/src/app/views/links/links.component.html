@@ -1,1 +1,13 @@
-<p>links works!</p>
+<div>
+  <p>Try fetching the profile from the backend</p>
+  <button hlmBtn class="mt-6" (click)="onBtnClick()">Fetch User Profile</button>
+  <div class="mt-6">
+    <h2>Profile</h2>
+    <div *ngIf="profileMutation.isSuccess()">
+      <p>Name: {{ profileMutation.data().sub }}</p>
+      <p>Email: {{ profileMutation.data().email }}</p>
+      <p>Initiation Date: {{ transformDate(profileMutation.data().iat) }}</p>
+      <p>Expiration Date: {{ transformDate(profileMutation.data().exp) }}</p>
+    </div>
+  </div>
+</div>

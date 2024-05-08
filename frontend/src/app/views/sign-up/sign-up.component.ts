@@ -5,9 +5,13 @@ import { Router, RouterLink } from '@angular/router';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 import { injectMutation } from '@tanstack/angular-query-experimental';
 import { HlmInputDirective } from '../../core/components/ui-input-helm/src/lib/hlm-input.directive';
-import { IUserSignUpDetails } from '../../core/services/auth/auth.interface';
+import {
+  IUserSignUpDetails,
+  IUserSignUpErrorResponse,
+} from '../../core/services/auth/auth.interface';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { toast } from 'ngx-sonner';
+import { CustomError } from '../../core/lib/CustomError';
 
 @Component({
   selector: 'app-sign-up',
@@ -42,10 +46,10 @@ export class SignUpComponent {
       });
       this.router.navigate(['/sign-in']);
     },
-    onError: (error) => {
+    onError: (error: CustomError<IUserSignUpErrorResponse>) => {
       console.log(error);
       toast('Sign up unsuccessful', {
-        description: 'Sign up was unsuccessful, try singing up again',
+        description: `${error.error.message}`,
         action: {
           label: 'Ok',
           onClick: () => null,
