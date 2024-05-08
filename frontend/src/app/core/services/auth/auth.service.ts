@@ -6,6 +6,7 @@ import {
   ILoginResponse,
   IUserSignUpDetails,
   decodedJwt,
+  IUserSignUpErrorResponse,
 } from './auth.interface';
 import { lastValueFrom } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
@@ -27,7 +28,9 @@ export class AuthService {
     );
   }
 
-  signUp(signUpDetails: IUserSignUpDetails): Promise<unknown> {
+  signUp(
+    signUpDetails: IUserSignUpDetails
+  ): Promise<unknown | Error<IUserSignUpErrorResponse>> {
     return lastValueFrom(
       this.http.post(`${environment.apiUrl}/auth/signup`, {
         email: signUpDetails.email,

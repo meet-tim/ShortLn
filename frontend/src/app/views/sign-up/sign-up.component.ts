@@ -45,7 +45,7 @@ export class SignUpComponent {
     onError: (error) => {
       console.log(error);
       toast('Sign up unsuccessful', {
-        description: 'Sign up was unsuccessful, try singing up again',
+        description: `${error.message}`,
         action: {
           label: 'Ok',
           onClick: () => null,
