@@ -4,3 +4,8 @@ export interface UserProfileResponse {
   iat: number;
   exp: number;
 }
+
+export interface UserProfileResponseError {
+  message: string;
+  statusCode: number;
+}
