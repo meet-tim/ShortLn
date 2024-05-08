@@ -1,16 +1,15 @@
+import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, PLATFORM_ID, inject } from '@angular/core';
+import { jwtDecode } from 'jwt-decode';
+import { lastValueFrom } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import {
-  IUserLogInDetails,
   ILoginResponse,
+  IUserLogInDetails,
   IUserSignUpDetails,
-  decodedJwt,
-  IUserSignUpErrorResponse,
+  decodedJwt
 } from './auth.interface';
-import { lastValueFrom } from 'rxjs';
-import { jwtDecode } from 'jwt-decode';
-import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -28,9 +27,7 @@ export class AuthService {
     );
   }
 
-  signUp(
-    signUpDetails: IUserSignUpDetails
-  ): Promise<unknown | Error<IUserSignUpErrorResponse>> {
+  signUp(signUpDetails: IUserSignUpDetails): Promise<unknown> {
     return lastValueFrom(
       this.http.post(`${environment.apiUrl}/auth/signup`, {
         email: signUpDetails.email,
