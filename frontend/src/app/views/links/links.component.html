@@ -1,13 +1,40 @@
-<div>
-  <p>Try fetching the profile from the backend</p>
-  <button hlmBtn class="mt-6" (click)="onBtnClick()">Fetch User Profile</button>
-  <div class="mt-6">
-    <h2>Profile</h2>
-    <div *ngIf="profileMutation.isSuccess()">
-      <p>Name: {{ profileMutation.data().sub }}</p>
-      <p>Email: {{ profileMutation.data().email }}</p>
-      <p>Initiation Date: {{ transformDate(profileMutation.data().iat) }}</p>
-      <p>Expiration Date: {{ transformDate(profileMutation.data().exp) }}</p>
+<main class="mx-[5%]">
+  <app-header />
+  <div class="flex flex-col items-center">
+    <!-- Hero Section -->
+    <div class="mt-36 flex flex-col gap-6 items-center">
+      <h1 class="text-gradient text-6xl leading-normal font-semibold">
+        Shorten Your Long Links
+      </h1>
+      <p class="text-xl">
+        ShortLn is an efficient and easy way to use URL shortening service that
+        streamlines your online experience
+      </p>
+    </div>
+
+    <!-- Link section -->
+    <div class="w-3/4 mt-32">
+      <div
+        class="rounded-[42px] ring ring-dark-01 overflow-hidden flex flex-row w-full p-[2px] align-middle"
+      >
+        <input
+          type="text"
+          placeholder="Enter link here"
+          class="py-8 pl-24 appearance-none grow rounded-s-[42px] dark:bg-inherit"
+        />
+        <button
+          type="button"
+          class="py-8 px-12 rounded-[42px] bg-blue-500 hover:bg-blue-800 text-white dark:text-white w-fit"
+        >
+          Shorten Now!
+        </button>
+      </div>
+      <div class="flex flex-col items-center mt-6">
+        <div class="flex items-center" hlmLabel>
+          <hlm-switch class="mr-2" (changed)="onCheckboxChange($event)" />
+          Auto Paste From Clipboard
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</main>
