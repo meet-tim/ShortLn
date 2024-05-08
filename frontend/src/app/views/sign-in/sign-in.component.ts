@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { injectMutation } from '@tanstack/angular-query-experimental';
@@ -32,6 +32,13 @@ export class SignInComponent {
   private readonly authService = inject(AuthService);
   checkboxValue = false;
   router = inject(Router);
+
+  constructor() {
+    // If you come to sign in page, and you have a cookie it should automatically log you in, but it must happen only on browsers
+    if (isPlatformBrowser(inject(PLATFORM_ID))) {
+      !this.authService.isTokenExpired() && this.router.navigate(['/links']);
+    }
+  }
 
   singInMutation = injectMutation(() => ({
     mutationFn: (logInDetails: IUserLogInDetails) =>

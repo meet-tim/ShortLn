@@ -8,7 +8,7 @@ import {
   ILoginResponse,
   IUserLogInDetails,
   IUserSignUpDetails,
-  decodedJwt
+  decodedJwt,
 } from './auth.interface';
 
 @Injectable({
@@ -45,7 +45,7 @@ export class AuthService {
     if (decodedToken) {
       const expiryDate = new Date();
       expiryDate.setMinutes(expiryDate.getMinutes() + 2); // add 2 minutes to the current time
-      document.cookie = `access_token=${token}; expires=${expiryDate.toUTCString()}; path=/; SameSite=Strict; Secure;`;
+      document.cookie = `shortln_access_token=${token}; expires=${expiryDate.toUTCString()}; path=/; SameSite=Strict; Secure;`;
     } else {
       console.error('Token not set - Invalid token');
     }
@@ -56,7 +56,7 @@ export class AuthService {
 
     const cookies = document.cookie.split(';');
     const token = cookies
-      .find((cookie) => cookie.includes('access_token'))
+      .find((cookie) => cookie.includes('shortln_access_token'))
       ?.split('=')[1];
     if (!token) {
       return true;
