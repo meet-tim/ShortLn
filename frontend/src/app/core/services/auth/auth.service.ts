@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { Injectable, PLATFORM_ID, inject } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import {
   IUserLogInDetails,
@@ -9,20 +9,14 @@ import {
 } from './auth.interface';
 import { lastValueFrom } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   http = inject(HttpClient);
-
-  constructor() {
-    setInterval(() => {
-      if (this.isTokenExpired()) {
-        document.cookie = 'access_token';
-      }
-    }, 500);
-  }
+  platformId = inject(PLATFORM_ID);
 
   signIn(logInDetails: IUserLogInDetails): Promise<ILoginResponse> {
     return lastValueFrom<ILoginResponse>(
@@ -45,17 +39,21 @@ export class AuthService {
   }
 
   setToken(token: string) {
+    if (!isPlatformBrowser(this.platformId)) return;
+
     const decodedToken = jwtDecode<decodedJwt | null>(token);
     if (decodedToken) {
-      document.cookie = `access_token=${token}; expires=${new Date(
-        decodedToken.exp * 1000
-      ).toUTCString()}; path=/; SameSite=Strict; Secure;`;
+      const expiryDate = new Date();
+      expiryDate.setMinutes(expiryDate.getMinutes() + 2); // add 2 minutes to the current time
+      document.cookie = `access_token=${token}; expires=${expiryDate.toUTCString()}; path=/; SameSite=Strict; Secure;`;
     } else {
       console.error('Token not set - Invalid token');
     }
   }
 
   isTokenExpired(): boolean {
+    if (!isPlatformBrowser(this.platformId)) return true;
+
     const cookies = document.cookie.split(';');
     const token = cookies
       .find((cookie) => cookie.includes('access_token'))

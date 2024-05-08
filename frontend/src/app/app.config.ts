@@ -11,13 +11,17 @@ import {
   QueryClient,
   provideAngularQuery,
 } from '@tanstack/angular-query-experimental';
-import { jwtInterceptor } from './core/services/auth/interceptors/jwtInterceptor';
+import { jwtInterceptor } from './core/interceptors/jwtInterceptor';
+import { unAuthorizedInterceptor } from './core/interceptors/unAuthorizedInterceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideClientHydration(),
-    provideHttpClient(withFetch(), withInterceptors([jwtInterceptor])),
+    provideHttpClient(
+      withFetch(),
+      withInterceptors([jwtInterceptor, unAuthorizedInterceptor])
+    ),
     provideAngularQuery(new QueryClient()),
   ],
 };
