@@ -43,9 +43,9 @@ export class AuthService {
 
     const decodedToken = jwtDecode<decodedJwt | null>(token);
     if (decodedToken) {
-      const expiryDate = new Date();
-      expiryDate.setMinutes(expiryDate.getMinutes() + 2); // add 2 minutes to the current time
-      document.cookie = `shortln_access_token=${token}; expires=${expiryDate.toUTCString()}; path=/; SameSite=Strict; Secure;`;
+      document.cookie = `shortln_access_token=${token}; expires=${new Date(
+        decodedToken.exp * 1000
+      )}; path=/; SameSite=Strict; Secure;`;
     } else {
       console.error('Token not set - Invalid token');
     }
