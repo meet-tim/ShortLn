@@ -77,6 +77,9 @@ importers:
       '@spartan-ng/ui-label-brain':
         specifier: 0.0.1-alpha.347
         version: 0.0.1-alpha.347(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(@angular/forms@17.3.7(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(@angular/platform-browser@17.3.7(@angular/animations@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)))(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)))(rxjs@7.8.1))
+      '@spartan-ng/ui-menu-brain':
+        specifier: 0.0.1-alpha.347
+        version: 0.0.1-alpha.347(@angular/cdk@17.3.6(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))
       '@tanstack/angular-query-devtools-experimental':
         specifier: ^5.35.1
         version: 5.35.1(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(@tanstack/angular-query-experimental@5.35.1(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)))
@@ -1880,6 +1883,12 @@ packages:
       '@angular/common': ^17.3.0
       '@angular/core': ^17.3.0
       '@angular/forms': ^17.3.0
+
+  '@spartan-ng/ui-menu-brain@0.0.1-alpha.347':
+    resolution: {integrity: sha512-o4IMctDvADJqgEt5AD9xz7EV9uw+0JWtoNv6Eb1i+cNIVWuZ6KxiXv61fNzJu9/ZVY3ub2dAh/o4o5Ny/Rlhpg==}
+    peerDependencies:
+      '@angular/cdk': ^17.3.0
+      '@angular/core': ^17.3.0
 
   '@tanstack/angular-query-devtools-experimental@5.35.1':
     resolution: {integrity: sha512-P9200g5Y0VYIO1+Ndjk17lPSYlQJc+Y5NsqHtfRgEOcm6A2Dcj1Lat7NHwdyRaNAYfErLF5vF2PDhUT1+PYtBA==}
@@ -9088,6 +9097,12 @@ snapshots:
       '@angular/common': 17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1)
       '@angular/core': 17.3.7(rxjs@7.8.1)(zone.js@0.14.5)
       '@angular/forms': 17.3.7(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(@angular/platform-browser@17.3.7(@angular/animations@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)))(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)))(rxjs@7.8.1)
+      tslib: 2.6.2
+
+  '@spartan-ng/ui-menu-brain@0.0.1-alpha.347(@angular/cdk@17.3.6(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))':
+    dependencies:
+      '@angular/cdk': 17.3.6(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1)
+      '@angular/core': 17.3.7(rxjs@7.8.1)(zone.js@0.14.5)
       tslib: 2.6.2
 
   '@tanstack/angular-query-devtools-experimental@5.35.1(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(@tanstack/angular-query-experimental@5.35.1(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.5)))':

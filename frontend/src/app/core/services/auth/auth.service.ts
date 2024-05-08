@@ -10,6 +10,7 @@ import {
   IUserSignUpDetails,
   decodedJwt,
 } from './auth.interface';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,7 @@ import {
 export class AuthService {
   http = inject(HttpClient);
   platformId = inject(PLATFORM_ID);
+  router = inject(Router);
 
   signIn(logInDetails: IUserLogInDetails): Promise<ILoginResponse> {
     return lastValueFrom<ILoginResponse>(
@@ -36,6 +38,13 @@ export class AuthService {
         lastname: signUpDetails.lastname,
       })
     );
+  }
+
+  singOut() {
+    if (!isPlatformBrowser(this.platformId)) return;
+    document.cookie =
+      'shortln_access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    this.router.navigate(['/sign-in']);
   }
 
   setToken(token: string) {
