@@ -1,5 +1,4 @@
-// export IUserInterface {
-//     email : string;
-//     password: string;
-
-// }
+export interface IUserInterface {
+  email: string;
+  name: string;
+}
