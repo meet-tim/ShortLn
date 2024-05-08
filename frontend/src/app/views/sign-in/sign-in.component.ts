@@ -8,7 +8,10 @@ import { HlmButtonDirective } from '../../core/components/ui-button-helm/src/lib
 import { HlmCheckboxComponent } from '../../core/components/ui-checkbox-helm/src/lib/hlm-checkbox.component';
 import { HlmInputDirective } from '../../core/components/ui-input-helm/src/lib/hlm-input.directive';
 import { HlmLabelDirective } from '../../core/components/ui-label-helm/src/lib/hlm-label.directive';
-import { IUserLogInDetails } from '../../core/services/auth/auth.interface';
+import {
+  ILoginResponse,
+  IUserLogInDetails,
+} from '../../core/services/auth/auth.interface';
 import { AuthService } from '../../core/services/auth/auth.service';
 
 @Component({
@@ -40,10 +43,10 @@ export class SignInComponent {
     }
   }
 
-  singInMutation = injectMutation(() => ({
+  singInMutation = injectMutation((client) => ({
     mutationFn: (logInDetails: IUserLogInDetails) =>
       this.authService.signIn(logInDetails),
-    onSuccess: (data) => {
+    onSuccess: (data: ILoginResponse) => {
       toast('Sign in successful', {
         description:
           'You have successfully signed in 🎉🎉🎉 You will be redirected to the links page',
@@ -54,6 +57,7 @@ export class SignInComponent {
       });
       this.authService.setToken(data.access_token);
       this.router.navigate(['/links']);
+      client.invalidateQueries({ queryKey: ['user-profile'] });
     },
     onError: (error) => {
       console.error(error);

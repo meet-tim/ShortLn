@@ -72,5 +72,6 @@ export class LinksComponent {
 
   onSignOutButtonClick() {
     this.authService.singOut();
+    
   }
 }
