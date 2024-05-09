@@ -1,1 +1,108 @@
-<p>links-root works!</p>
+<div class="h-[calc(100vh-88px)]">
+  <div class="flex h-full flex-col items-center justify-between">
+    <!-- Hero Section -->
+    <div class="flex flex-col items-center gap-4">
+      <h1 class="text-gradient text-6xl font-semibold leading-normal">
+        Shorten Your Long Links
+      </h1>
+      <p class="text-xl">
+        ShortLn is an efficient and easy way to use URL shortening service that
+        streamlines your online experience
+      </p>
+    </div>
+
+    <!-- Link section -->
+    <div class="w-3/4">
+      <div
+        class="flex w-full flex-row overflow-hidden rounded-[42px] border border-dark-01 p-[2px] align-middle dark:bg-zinc-700"
+      >
+        <input
+          type="text"
+          placeholder="Enter link here"
+          class="grow appearance-none rounded-s-[42px] py-5 pl-24 dark:bg-inherit"
+        />
+        <button
+          type="button"
+          class="w-fit rounded-[42px] bg-blue-500 px-12 py-5 text-white hover:bg-blue-800 dark:text-white"
+        >
+          Shorten Now!
+        </button>
+      </div>
+      <div class="mt-6 flex flex-col items-center">
+        <div class="flex items-center" hlmLabel>
+          <hlm-switch
+            class="mr-2 dark:data-[state=unchecked]:bg-zinc-700"
+            (changed)="onCheckboxChange($event)"
+          />
+          Auto Copy To Clipboard
+        </div>
+      </div>
+    </div>
+
+    <div class="flex h-2/4 w-3/5 flex-col items-end overflow-auto">
+      @for (link of links(); track $index) {
+        <div
+          class="mb-4 flex w-full flex-row justify-between overflow-hidden rounded-md border border-dark-01 px-4 py-4 dark:bg-zinc-900"
+        >
+          <div class="flex w-fit flex-col gap-2 rounded-[42px]">
+            <p class="text-gradient w-fit text-lg font-semibold">
+              {{ link.shortenedUrl }}
+            </p>
+            <p class="font-light text-zinc-500 dark:text-zinc-200">
+              {{ link.longUrl }}
+            </p>
+          </div>
+          <div class="flex flex-row items-center gap-2">
+            <button type="button" class="text-zinc-500" (click)="onCopyClick()">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#71717a"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-copy"
+              >
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path
+                  d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="text-red-400"
+              (click)="onDeleteClick()"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#71717a"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-trash-2 !text-zinc-500"
+              >
+                <path d="M3 6h18" />
+                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                <line x1="10" x2="10" y1="11" y2="17" />
+                <line x1="14" x2="14" y1="11" y2="17" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      }
+
+      <a href="/" class="text-blue-500 underline underline-offset-2"
+        >Show All Links</a
+      >
+    </div>
+  </div>
+</div>
