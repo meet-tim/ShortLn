@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/component-selector */
 import { Component, PLATFORM_ID } from '@angular/core';
 import {
   TestBed,

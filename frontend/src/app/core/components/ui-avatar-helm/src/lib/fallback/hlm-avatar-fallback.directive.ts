@@ -1,3 +1,5 @@
+/* eslint-disable @angular-eslint/no-host-metadata-property */
+/* eslint-disable @angular-eslint/directive-selector */
 import { Directive, computed, inject } from '@angular/core';
 import {
   BrnAvatarFallbackDirective,
