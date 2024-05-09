@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './all.component.html',
   styleUrl: './all.component.css'
 })
-export class AllComponent {
+export class AllLinksComponent {
 
 }

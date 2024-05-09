@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AllLinksComponent } from './all.component';
+import { LinksRootComponent } from './links-root.component';
 
-describe('AllComponent', () => {
-  let component: AllLinksComponent;
-  let fixture: ComponentFixture<AllLinksComponent>;
+describe('LinksRootComponent', () => {
+  let component: LinksRootComponent;
+  let fixture: ComponentFixture<LinksRootComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AllLinksComponent]
+      imports: [LinksRootComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(AllLinksComponent);
+    fixture = TestBed.createComponent(LinksRootComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

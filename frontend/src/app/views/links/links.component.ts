@@ -1,9 +1,10 @@
 import { Component, WritableSignal, signal } from '@angular/core';
-import { HeaderComponent } from './components/header/header.component'; 
+import { HeaderComponent } from './components/header/header.component';
 import { HlmLabelDirective } from '@spartan-ng/ui-label-helm';
 import { HlmSwitchComponent } from '@spartan-ng/ui-switch-helm';
 import { toast } from 'ngx-sonner';
 import { HlmButtonDirective } from '../../core/components/ui-button-helm/src/lib/hlm-button.directive';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-links',
@@ -13,6 +14,7 @@ import { HlmButtonDirective } from '../../core/components/ui-button-helm/src/lib
     HlmLabelDirective,
     HlmSwitchComponent,
     HlmButtonDirective,
+    RouterOutlet,
   ],
   providers: [],
   templateUrl: './links.component.html',
