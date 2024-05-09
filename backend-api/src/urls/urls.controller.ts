@@ -1,4 +1,4 @@
-import { Body, Controller,Delete,Get,Param,Post, UseGuards,Request } from '@nestjs/common';
+import { Body, Controller,Delete,Get,Param,Post, UseGuards,Request, Redirect } from '@nestjs/common';
 import { UrlsService } from './urls.service';
 import { Url } from './schemas/urls.schema';
 import { AuthGuard } from 'src/auth/auth.guard';
@@ -18,12 +18,23 @@ export class UrlsController {
     @Post('shorten')
     async shortenUrl(@Request() req,@Body('url') url: string): Promise<string> {
       const shortUrl = await this.urlsService.shortenUrl(url,req.user.email);
-      return `https://shortln-production.up.railway.app/${shortUrl.shortUrl}`;
+      return shortUrl.shortenedUrl;
     }
     @UseGuards(AuthGuard)
     @Delete(':id')
     async deleteUrl(@Param('id') id: string): Promise<string>{
         await this.urlsService.deleteUrl(id);
         return "success";
+    }
+
+    @Get(':shortCode')
+    @Redirect('https://nestjs.com', 301)
+    async redirectToOriginalUrl(@Param('shortCode') shortCode: string){
+        const urls = await this.urlsService.findByCode(shortCode);
+        if (urls.length!==0){
+            const url = urls[0];
+            console.log(url);
+            return {url:url.longUrl} 
+        }
     }
 }
