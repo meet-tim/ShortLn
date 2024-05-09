@@ -8,8 +8,9 @@ import {
   ILoginResponse,
   IUserLogInDetails,
   IUserSignUpDetails,
-  decodedJwt
+  decodedJwt,
 } from './auth.interface';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,7 @@ import {
 export class AuthService {
   http = inject(HttpClient);
   platformId = inject(PLATFORM_ID);
+  router = inject(Router);
 
   signIn(logInDetails: IUserLogInDetails): Promise<ILoginResponse> {
     return lastValueFrom<ILoginResponse>(
@@ -38,14 +40,21 @@ export class AuthService {
     );
   }
 
+  singOut() {
+    if (!isPlatformBrowser(this.platformId)) return;
+    document.cookie =
+      'shortln_access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    this.router.navigate(['/sign-in']);
+  }
+
   setToken(token: string) {
     if (!isPlatformBrowser(this.platformId)) return;
 
     const decodedToken = jwtDecode<decodedJwt | null>(token);
     if (decodedToken) {
-      const expiryDate = new Date();
-      expiryDate.setMinutes(expiryDate.getMinutes() + 2); // add 2 minutes to the current time
-      document.cookie = `access_token=${token}; expires=${expiryDate.toUTCString()}; path=/; SameSite=Strict; Secure;`;
+      document.cookie = `shortln_access_token=${token}; expires=${new Date(
+        decodedToken.exp * 1000
+      )}; path=/; SameSite=Strict; Secure;`;
     } else {
       console.error('Token not set - Invalid token');
     }
@@ -56,7 +65,7 @@ export class AuthService {
 
     const cookies = document.cookie.split(';');
     const token = cookies
-      .find((cookie) => cookie.includes('access_token'))
+      .find((cookie) => cookie.includes('shortln_access_token'))
       ?.split('=')[1];
     if (!token) {
       return true;

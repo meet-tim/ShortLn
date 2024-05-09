@@ -11,7 +11,6 @@ export function jwtInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn) {
   const token = cookies
     .find((cookie) => cookie.includes('access_token='))
     ?.split('=')[1];
-  console.log(cookies);
   const authReq = req.clone({
     setHeaders: {
       Authorization: `Bearer ${token}`,

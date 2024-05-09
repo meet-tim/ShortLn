@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { injectMutation } from '@tanstack/angular-query-experimental';
@@ -8,7 +8,10 @@ import { HlmButtonDirective } from '../../core/components/ui-button-helm/src/lib
 import { HlmCheckboxComponent } from '../../core/components/ui-checkbox-helm/src/lib/hlm-checkbox.component';
 import { HlmInputDirective } from '../../core/components/ui-input-helm/src/lib/hlm-input.directive';
 import { HlmLabelDirective } from '../../core/components/ui-label-helm/src/lib/hlm-label.directive';
-import { IUserLogInDetails } from '../../core/services/auth/auth.interface';
+import {
+  ILoginResponse,
+  IUserLogInDetails,
+} from '../../core/services/auth/auth.interface';
 import { AuthService } from '../../core/services/auth/auth.service';
 
 @Component({
@@ -33,10 +36,17 @@ export class SignInComponent {
   checkboxValue = false;
   router = inject(Router);
 
-  singInMutation = injectMutation(() => ({
+  constructor() {
+    // If you come to sign in page, and you have a cookie it should automatically log you in, but it must happen only on browsers
+    if (isPlatformBrowser(inject(PLATFORM_ID))) {
+      !this.authService.isTokenExpired() && this.router.navigate(['/links']);
+    }
+  }
+
+  singInMutation = injectMutation((client) => ({
     mutationFn: (logInDetails: IUserLogInDetails) =>
       this.authService.signIn(logInDetails),
-    onSuccess: (data) => {
+    onSuccess: (data: ILoginResponse) => {
       toast('Sign in successful', {
         description:
           'You have successfully signed in 🎉🎉🎉 You will be redirected to the links page',
@@ -47,6 +57,7 @@ export class SignInComponent {
       });
       this.authService.setToken(data.access_token);
       this.router.navigate(['/links']);
+      client.invalidateQueries({ queryKey: ['user-profile'] });
     },
     onError: (error) => {
       console.error(error);

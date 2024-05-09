@@ -12,8 +12,8 @@ export const ThemeStore = signalStore(
   withDevtools('theme'),
   withState(initialState),
   withMethods((store) => ({
-    setTheme: (theme: 'light' | 'dark') => {
-      patchState(store, setTheme(theme));
+    setTheme: (payload: 'light' | 'dark') => {
+      patchState(store, setTheme(payload));
     },
   }))
 );
