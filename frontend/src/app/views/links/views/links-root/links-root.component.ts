@@ -1,9 +1,10 @@
-import { Component, WritableSignal, signal } from '@angular/core';
+import { Component, WritableSignal, inject, signal } from '@angular/core';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 import { HlmLabelDirective } from '@spartan-ng/ui-label-helm';
 import { HlmSwitchComponent } from '@spartan-ng/ui-switch-helm';
 import { toast } from 'ngx-sonner';
 import { LinkCardComponent } from '../../components/link-card/link-card.component';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-links-root',
@@ -13,11 +14,13 @@ import { LinkCardComponent } from '../../components/link-card/link-card.componen
     HlmSwitchComponent,
     HlmButtonDirective,
     LinkCardComponent,
+    RouterLink,
   ],
   templateUrl: './links-root.component.html',
   styleUrl: './links-root.component.css',
 })
 export class LinksRootComponent {
+  route = inject(ActivatedRoute);
   links: WritableSignal<{ longUrl: string; shortenedUrl: string }[]> = signal([
     {
       longUrl: 'https://www.konadu.dev/sdaklf;dsfjksdafsd;kffalfsdfsadklfj',

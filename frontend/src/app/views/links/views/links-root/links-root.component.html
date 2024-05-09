@@ -43,8 +43,10 @@
       @for (link of links(); track $index) {
         <app-link-card [props]="link" class="w-full" />
       }
-
-      <a href="/" class="text-blue-500 underline underline-offset-2"
+      <a
+        [routerLink]="['all']"
+        [relativeTo]="route"
+        class="text-blue-500 underline underline-offset-2"
         >Show All Links</a
       >
     </div>
