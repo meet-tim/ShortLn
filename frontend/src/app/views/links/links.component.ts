@@ -12,7 +12,17 @@ import { HlmSwitchComponent } from '@spartan-ng/ui-switch-helm';
   styleUrl: './links.component.css',
 })
 export class LinksComponent {
-  onCheckboxChange(value: boolean)k {
+  links = [
+    { url: 'https://www.konadu.dev' },
+    { url: 'https://www.konadu.dev' },
+    { url: 'https://www.konadu.dev' },
+    { url: 'https://www.konadu.dev' },
+    { url: 'https://www.konadu.dev' },
+    { url: 'https://www.konadu.dev' },
+    { url: 'https://www.konadu.dev' },
+    { url: 'https://www.konadu.dev' },
+  ];
+  onCheckboxChange(value: boolean) {
     console.log(value);
   }
 }

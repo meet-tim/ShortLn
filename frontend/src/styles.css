@@ -56,7 +56,7 @@
 }
 
 html {
-  @apply k;
+  @apply bg-white dark:bg-black;
 }
 
 .text-gradient {
