@@ -11,12 +11,15 @@ export class Url {
   urlId: string;
   
   @Prop({ required: true ,unique:true, type:String})
-  originalUrl: string;
+  longUrl: string;
  
   @Prop({ required: true ,unique:true, type:String})
-  shortUrl: string;
+  shortenedUrl: string;
 
-  @Prop({ required: true ,unique:true, type:String})
+  @Prop({require:true,unique:true, type:String})
+  shortCode
+
+  @Prop({ required: true , type:String})
   owner: string;
 }
 
