@@ -3,11 +3,17 @@ import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 import { HlmLabelDirective } from '@spartan-ng/ui-label-helm';
 import { HlmSwitchComponent } from '@spartan-ng/ui-switch-helm';
 import { toast } from 'ngx-sonner';
+import { LinkCardComponent } from '../../components/link-card/link-card.component';
 
 @Component({
   selector: 'app-links-root',
   standalone: true,
-  imports: [HlmLabelDirective, HlmSwitchComponent, HlmButtonDirective],
+  imports: [
+    HlmLabelDirective,
+    HlmSwitchComponent,
+    HlmButtonDirective,
+    LinkCardComponent,
+  ],
   templateUrl: './links-root.component.html',
   styleUrl: './links-root.component.css',
 })
