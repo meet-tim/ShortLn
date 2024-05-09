@@ -18,10 +18,7 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": [
-      "ES2022",
-      "dom"
-    ],
+    "lib": ["ES2022", "dom"],
     "paths": {
       "@spartan-ng/ui-button-helm": [
         "./src/app/core/components/ui-button-helm/src/index.ts"

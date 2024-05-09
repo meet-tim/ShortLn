@@ -55,7 +55,7 @@ export class HeaderComponent {
           throw new Error('Failed to fetch user profile');
         }
       },
-    }))
+    })),
   );
 
   onSignOutButtonClick() {

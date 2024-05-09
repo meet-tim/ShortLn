@@ -15,5 +15,5 @@ export const ThemeStore = signalStore(
     setTheme: (payload: 'light' | 'dark') => {
       patchState(store, setTheme(payload));
     },
-  }))
+  })),
 );

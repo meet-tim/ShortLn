@@ -25,7 +25,7 @@ export class AuthService {
       this.http.post<ILoginResponse>(`${environment.apiUrl}/auth/login`, {
         email: logInDetails.email,
         password: logInDetails.password,
-      })
+      }),
     );
   }
 
@@ -36,7 +36,7 @@ export class AuthService {
         password: signUpDetails.password,
         firstname: signUpDetails.firstname,
         lastname: signUpDetails.lastname,
-      })
+      }),
     );
   }
 
@@ -53,7 +53,7 @@ export class AuthService {
     const decodedToken = jwtDecode<decodedJwt | null>(token);
     if (decodedToken) {
       document.cookie = `shortln_access_token=${token}; expires=${new Date(
-        decodedToken.exp * 1000
+        decodedToken.exp * 1000,
       )}; path=/; SameSite=Strict; Secure;`;
     } else {
       console.error('Token not set - Invalid token');

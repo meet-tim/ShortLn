@@ -12,7 +12,7 @@ import { HlmSwitchComponent } from '@spartan-ng/ui-switch-helm';
   styleUrl: './links.component.css',
 })
 export class LinksComponent {
-  onCheckboxChange(value: boolean) {
+  onCheckboxChange(value: boolean)k {
     console.log(value);
   }
 }
