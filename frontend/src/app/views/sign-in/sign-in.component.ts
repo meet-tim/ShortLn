@@ -57,7 +57,7 @@ export class SignInComponent {
       });
       this.authService.setToken(data.access_token);
       this.router.navigate(['/links']);
-      client.invalidateQueries({ queryKey: ['user-profile'] });
+      client.invalidateQueries();
     },
     onError: (error) => {
       console.error(error);
