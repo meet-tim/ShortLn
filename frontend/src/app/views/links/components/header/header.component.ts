@@ -8,11 +8,11 @@ import {
   HlmMenuLabelComponent,
   HlmMenuSeparatorComponent,
 } from '@spartan-ng/ui-menu-helm';
-import { AuthService } from '../../../core/services/auth/auth.service';
-import { UserService } from '../../../core/services/user/user.service';
-import { UserStore } from '../../../core/store/user/user.store';
+import { AuthService } from '../../../../core/services/auth/auth.service';
+import { UserService } from '../../../../core/services/user/user.service';
+import { UserStore } from '../../../../core/store/user/user.store';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
-import { HlmAvatarComponent } from '../../../core/components/ui-avatar-helm/src/lib/hlm-avatar.component';
+import { HlmAvatarComponent } from '../../../../core/components/ui-avatar-helm/src/lib/hlm-avatar.component';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 
 @Component({

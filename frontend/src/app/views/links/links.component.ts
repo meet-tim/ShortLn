@@ -1,5 +1,5 @@
 import { Component, WritableSignal, signal } from '@angular/core';
-import { HeaderComponent } from '../components/header/header.component';
+import { HeaderComponent } from './components/header/header.component'; 
 import { HlmLabelDirective } from '@spartan-ng/ui-label-helm';
 import { HlmSwitchComponent } from '@spartan-ng/ui-switch-helm';
 import { toast } from 'ngx-sonner';
