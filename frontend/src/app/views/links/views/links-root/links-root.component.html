@@ -50,12 +50,7 @@
           <app-placeholder class="w-full" />
         }
         @case ("success") {
-          @for (
-            link of linksStore
-              .allLinks()
-              .slice(linksStore.allLinks().length - 3);
-            track link.urlId
-          ) {
+          @for (link of linksArray().slice(-3).reverse(); track link.urlId) {
             <app-link-card
               [props]="{
                 longUrl: link.longUrl,

@@ -16,6 +16,7 @@ import { HlmAvatarComponent } from '../../../../core/components/ui-avatar-helm/s
 import { AuthService } from '../../../../core/services/auth/auth.service';
 import { UserService } from '../../../../core/services/user/user.service';
 import { UserStore } from '../../../../core/store/user/user.store';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -30,6 +31,7 @@ import { UserStore } from '../../../../core/store/user/user.store';
     HlmMenuLabelComponent,
     HlmMenuSeparatorComponent,
     HlmMenuGroupComponent,
+    RouterLink
   ],
   providers: [],
   templateUrl: './header.component.html',

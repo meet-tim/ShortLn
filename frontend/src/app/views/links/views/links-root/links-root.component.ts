@@ -1,4 +1,10 @@
-import { Component, NgZone, inject } from '@angular/core';
+import {
+  Component,
+  NgZone,
+  WritableSignal,
+  inject,
+  signal,
+} from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
@@ -12,6 +18,8 @@ import { LinksService } from '../../../../core/services/links/links.service';
 import { LinksStore } from '../../../../core/store/links/links.store';
 import { LinkCardComponent } from '../../components/link-card/link-card.component';
 import { PlaceholderComponent } from '../../components/link-card/placeholder/placeholder.component';
+import { IAllLinksResponse } from '../../../../core/services/links/links.service.interface';
+import { produce } from 'immer';
 
 @Component({
   selector: 'app-links-root',
@@ -35,11 +43,17 @@ export class LinksRootComponent {
   linksStore = inject(LinksStore);
   formBuilder = inject(FormBuilder);
 
+  constructor() {
+    this.linksArray.set(this.links.data()?.slice(-3) || []);
+  }
+
   shortenForm = this.formBuilder.array([
     this.formBuilder.group({
       longUrl: [''],
     }),
   ]);
+
+  linksArray: WritableSignal<IAllLinksResponse[]> = signal([]);
 
   links = this.ngZone.runOutsideAngular(() =>
     injectQuery(() => ({
@@ -50,6 +64,9 @@ export class LinksRootComponent {
           return this.ngZone.run(() => {
             this.linksStore.setAllLinks(
               fetchedLinks.filter(this.linksService.filterFunction),
+            );
+            this.linksArray.set(
+              fetchedLinks.filter(this.linksService.filterFunction).slice(-3),
             );
             return fetchedLinks;
           });
@@ -80,6 +97,20 @@ export class LinksRootComponent {
       !this.shortenForm.controls[0].value.longUrl
     )
       return;
+
+    this.linksArray.update((prev) => {
+      return produce(prev, (draft) => {
+        draft.push({
+          _id: '',
+          __v: 0,
+          longUrl: this.shortenForm.controls[0].value.longUrl as string,
+          owner: '',
+          shortCode: '',
+          shortenedUrl: '',
+          urlId: '',
+        });
+      });
+    });
     this.addLinkMutation.mutate(this.shortenForm.controls[0].value.longUrl);
   }
 }
