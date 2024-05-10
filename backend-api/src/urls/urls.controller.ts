@@ -16,7 +16,7 @@ export class UrlsController {
 
     @UseGuards(AuthGuard)
     @Post('shorten')
-    async shortenUrl(@Request() req,@Body('url') url: string): Promise<string> {
+    async shortenUrl(@Request() req,@Body('url') url: string): Promise<any> {
       const shortUrl = await this.urlsService.shortenUrl(url,req.user.email);
       return {url:shortUrl.shortenedUrl};
     }
