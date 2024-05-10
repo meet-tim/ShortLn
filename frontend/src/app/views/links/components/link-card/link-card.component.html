@@ -3,10 +3,18 @@
 >
   <div class="flex w-fit flex-col gap-2 rounded-[42px]">
     <p class="text-gradient w-fit text-lg font-semibold">
-      {{ props.shortenedUrl }}
+      <a
+        [href]="props.shortenedUrl"
+        target="_blank"
+        class="text-gradient hover:text-blue-500"
+      >
+        {{ props.shortenedUrl }}
+      </a>
     </p>
     <p class="font-light text-zinc-500 dark:text-zinc-200">
-      {{ props.longUrl }}
+      <a [href]="props.longUrl" target="_blank" class="hover:text-blue-500">
+        {{ props.longUrl }}
+      </a>
     </p>
   </div>
   <div class="flex flex-row items-center gap-2">

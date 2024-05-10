@@ -33,5 +33,6 @@ export class LinkCardComponent {
         onClick: () => null,
       },
     });
+    navigator.clipboard.writeText(this.props.shortenedUrl);
   }
 }
