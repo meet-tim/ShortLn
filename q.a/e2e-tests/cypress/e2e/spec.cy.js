@@ -9,6 +9,8 @@ describe('Shortln app tests', () => {
     
     // Click on sign up button
     cy.get('button[type="submit"]').click();
+
+     
   });
 
 
@@ -29,8 +31,21 @@ describe('Shortln app tests', () => {
 
     // Assert that the user is redirected to the home page
     cy.url().should('include', '/links');
+
+    //user inputs a value in this field
+    cy.get('.pl-24').type('youtube.com');
+
+    //click on shorten now button
+    cy.get('.px-12').click();
+
+    
+
+
+    
     
   });
   
+
+ 
 })
   
