@@ -10,10 +10,10 @@ import { IAllLinksResponse } from './links.service.interface';
 export class LinksService {
   http = inject(HttpClient);
 
-  addLink(link: string) {
+  addLink(link: string): Promise<{ url: string }> {
     console.log(link);
-    return lastValueFrom(
-      this.http.post(`${environment.apiUrl}/urls/shorten`, {
+    return lastValueFrom<{ url: string }>(
+      this.http.post<{ url: string }>(`${environment.apiUrl}/urls/shorten`, {
         url: link,
       }),
     );

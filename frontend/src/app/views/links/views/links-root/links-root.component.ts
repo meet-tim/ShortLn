@@ -42,6 +42,7 @@ export class LinksRootComponent {
   linksService = inject(LinksService);
   linksStore = inject(LinksStore);
   formBuilder = inject(FormBuilder);
+  copyToClipboard = false;
 
   constructor() {
     this.linksArray.set(this.links.data()?.slice(-3) || []);
@@ -79,8 +80,11 @@ export class LinksRootComponent {
   );
   addLinkMutation = injectMutation((client) => ({
     mutationFn: (url: string) => this.linksService.addLink(url),
-    onSuccess: () => {
+    onSuccess: (data: { url: string }) => {
       client.invalidateQueries({ queryKey: ['get-all-links'] });
+      if (this.copyToClipboard) {
+        navigator.clipboard.writeText(data.url);
+      }
     },
     onError: (error) => {
       console.log(error);
@@ -88,7 +92,7 @@ export class LinksRootComponent {
   }));
 
   onCheckboxChange(value: boolean) {
-    console.log(value);
+    this.copyToClipboard = value;
   }
 
   onAddLinkClick() {

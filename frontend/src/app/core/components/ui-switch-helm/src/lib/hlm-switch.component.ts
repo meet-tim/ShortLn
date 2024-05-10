@@ -52,6 +52,7 @@ export const HLM_SWITCH_VALUE_ACCESSOR = {
       [aria-label]="ariaLabel"
       [aria-labelledby]="ariaLabelledby"
       [aria-describedby]="ariaDescribedby"
+      
     >
       <brn-switch-thumb hlm />
     </brn-switch>
