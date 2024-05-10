@@ -20,7 +20,7 @@ export class UrlsService {
         const urlObj = new Url();
         urlObj.longUrl = url;
         urlObj.shortCode = this.generateCode(5)
-        urlObj.shortenedUrl = `https://shortln-production.up.railway.app/${urlObj.shortCode}`
+        urlObj.shortenedUrl = `https://shortln-production.up.railway.app/urls/${urlObj.shortCode}`
         
         urlObj.owner = email
         const createdUrl = new this.urlModel(urlObj)
