@@ -52,7 +52,7 @@
 }
 
 *:not(p) {
-  @apply transition-colors duration-500 ease-in-out scroll-smooth text-dark-01 dark:text-white;
+  @apply scroll-smooth text-dark-01 transition-colors duration-500 ease-in-out dark:text-white;
 }
 
 html {
@@ -60,5 +60,5 @@ html {
 }
 
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#fd685d] to-[#4081ec];
+  @apply bg-gradient-to-r from-[#fd685d] to-[#4081ec] bg-clip-text text-transparent;
 }

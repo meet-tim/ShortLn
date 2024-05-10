@@ -24,7 +24,6 @@ import { AuthService } from '../../core/services/auth/auth.service';
     HlmLabelDirective,
     HlmCheckboxComponent,
     HlmButtonDirective,
-    CommonModule,
     RouterLink,
   ],
   templateUrl: './sign-in.component.html',
@@ -57,10 +56,10 @@ export class SignInComponent {
       });
       this.authService.setToken(data.access_token);
       this.router.navigate(['/links']);
-      client.invalidateQueries({ queryKey: ['user-profile'] });
+      client.invalidateQueries();
     },
     onError: (error) => {
-      console.error(error);
+      console.log(error);
       toast('Error logging you in', {
         description: 'Check your email and password and try again',
         action: {

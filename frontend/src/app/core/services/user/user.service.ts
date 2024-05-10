@@ -13,8 +13,8 @@ export class UserService {
   fetchUserProfile() {
     return lastValueFrom<UserProfileResponse>(
       this.httpClient.get<UserProfileResponse>(
-        `${environment.apiUrl}/auth/profile`
-      )
+        `${environment.apiUrl}/auth/profile`,
+      ),
     );
   }
 }
