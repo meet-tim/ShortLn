@@ -9,13 +9,19 @@ export class UrlsService {
     constructor(@InjectModel("Url") private readonly urlModel: Model<Url>) {}
 
     async findAll(email:string): Promise<Url[]> {
-      return this.urlModel.find({email}).exec();
+      return this.urlModel.find({owner:email}).exec();
     }
+
+    async findByCode(shortUrl:string): Promise<Url[]> {
+        return this.urlModel.find({shortCode:shortUrl}).exec();
+      }
 
     async shortenUrl(url:string,email:string): Promise<Url>{
         const urlObj = new Url();
-        urlObj.originalUrl = url;
-        urlObj.shortUrl = this.generateCode(5)
+        urlObj.longUrl = url;
+        urlObj.shortCode = this.generateCode(5)
+        urlObj.shortenedUrl = `https://shortln-production.up.railway.app/urls/${urlObj.shortCode}`
+        
         urlObj.owner = email
         const createdUrl = new this.urlModel(urlObj)
         return createdUrl.save();
@@ -37,5 +43,7 @@ export class UrlsService {
         }
         return result;
     }
+
+    
 
 }
