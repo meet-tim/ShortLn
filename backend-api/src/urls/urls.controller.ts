@@ -18,7 +18,7 @@ export class UrlsController {
     @Post('shorten')
     async shortenUrl(@Request() req,@Body('url') url: string): Promise<string> {
       const shortUrl = await this.urlsService.shortenUrl(url,req.user.email);
-      return shortUrl.shortenedUrl;
+      return {url:shortUrl.shortenedUrl};
     }
     @UseGuards(AuthGuard)
     @Delete(':id')
