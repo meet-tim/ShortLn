@@ -20,7 +20,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideHttpClient(
       withFetch(),
-      withInterceptors([jwtInterceptor, unAuthorizedInterceptor])
+      withInterceptors([jwtInterceptor, unAuthorizedInterceptor]),
     ),
     provideAngularQuery(new QueryClient()),
   ],

@@ -8,10 +8,9 @@ describe('ThemeProviderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ThemeProviderComponent]
-    })
-    .compileComponents();
-    
+      imports: [ThemeProviderComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ThemeProviderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
