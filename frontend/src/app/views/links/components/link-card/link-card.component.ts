@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { injectMutation } from '@tanstack/angular-query-experimental';
 import { toast } from 'ngx-sonner';
+import { LinksService } from '../../../../core/services/links/links.service';
 
 @Component({
   selector: 'app-link-card',
@@ -15,7 +17,19 @@ export class LinkCardComponent {
     urlId: string;
   };
 
+  linksService = inject(LinksService);
+  deleteMutation = injectMutation((client) => ({
+    mutationFn: (urlId: string) => this.linksService.deleteLink(urlId),
+    onSuccess: () => {
+      client.invalidateQueries({ queryKey: ['get-all-links'] });
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  }));
+
   onDeleteClick() {
+    this.deleteMutation.mutate(this.props.urlId);
     toast('Link deleted', {
       description: 'Link has been deleted successfully',
       action: {
