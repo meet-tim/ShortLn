@@ -59,7 +59,7 @@ export class AuthService {
         decodedToken.exp * 1000,
       )}; path=/; SameSite=Strict; Secure;`;
     } else {
-      console.error('Token not set - Invalid token');
+      console.log('Token not set - Invalid token');
     }
   }
 

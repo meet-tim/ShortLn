@@ -60,7 +60,7 @@ export class SignInComponent {
       client.invalidateQueries();
     },
     onError: (error) => {
-      console.error(error);
+      console.log(error);
       toast('Error logging you in', {
         description: 'Check your email and password and try again',
         action: {
