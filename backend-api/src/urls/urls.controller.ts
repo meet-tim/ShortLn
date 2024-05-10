@@ -24,7 +24,7 @@ export class UrlsController {
     @Delete(':id')
     async deleteUrl(@Param('id') id: string): Promise<string>{
         await this.urlsService.deleteUrl(id);
-        return "success";
+        return {message:"success"};
     }
 
     @Get(':shortCode')
