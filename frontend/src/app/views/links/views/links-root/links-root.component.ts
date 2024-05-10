@@ -1,4 +1,4 @@
-import { Component, WritableSignal, inject, signal } from '@angular/core';
+import { Component, NgZone, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 import { HlmLabelDirective } from '@spartan-ng/ui-label-helm';
@@ -25,52 +25,40 @@ import { PlaceholderComponent } from '../../components/link-card/placeholder/pla
   styleUrl: './links-root.component.css',
 })
 export class LinksRootComponent {
+  ngZone = inject(NgZone);
   route = inject(ActivatedRoute);
   linksService = inject(LinksService);
   linksStore = inject(LinksStore);
-  links_1: WritableSignal<{ longUrl: string; shortenedUrl: string }[]> = signal(
-    [
-      {
-        longUrl: 'https://www.konadu.dev/sdaklf;dsfjksdafsd;kffalfsdfsadklfj',
-        shortenedUrl: 'https://www.konadu.dev',
-      },
-      {
-        longUrl: 'https://www.konadu.dev/sdaklf;dsfjksdafsd;kffalfsdfsadklfj',
-        shortenedUrl: 'https://www.konadu.dev',
-      },
-      {
-        longUrl: 'https://www.konadu.dev/sdaklf;dsfjksdafsd;kffalfsdfsadklfj',
-        shortenedUrl: 'https://www.konadu.dev',
-      },
-    ],
-  );
 
-  links = injectQuery(() => ({
-    queryKey: ['get-all-links'],
-    queryFn: async () => {
-      try {
-        const fetchedLinks = await this.linksService.getAllLinks();
-        this.linksStore.setAllLinks(
-          fetchedLinks.filter((link) => ({
-            longUrl: link.longUrl,
-            shortenedUrl: link.shortenedUrl,
-            urlId: link.urlId,
-          })),
-        );
-        return fetchedLinks;
-      } catch (error) {
-        this.linksStore.setAllLinks([]);
-        return null;
-      }
-    },
-  }));
+  links = this.ngZone.runOutsideAngular(() =>
+    injectQuery(() => ({
+      queryKey: ['get-all-links'],
+      queryFn: async () => {
+        try {
+          const fetchedLinks = await this.linksService.getAllLinks();
+          return this.ngZone.run(() => {
+            this.linksStore.setAllLinks(
+              fetchedLinks.filter((link) => ({
+                longUrl: link.longUrl,
+                shortenedUrl: link.shortenedUrl,
+                urlId: link.urlId,
+              })),
+            );
+            return fetchedLinks;
+          });
+        } catch (error) {
+          this.linksStore.setAllLinks([]);
+          return null;
+        }
+      },
+    })),
+  );
 
   onCheckboxChange(value: boolean) {
     console.log(value);
   }
 
   onDeleteClick() {
-    this.links_1.update((prev) => prev.slice(0, prev.length - 1));
     toast('Link deleted', {
       description: 'Link has been deleted successfully',
       action: {
