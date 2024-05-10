@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { environment } from '../../../../environments/environment';
-import { IAllLinks, IAllLinksResponseError } from './links.interface';
-import { CustomError } from '../../lib/CustomError';
+import {
+  IAllLinksResponse
+} from './links.service.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -11,11 +12,9 @@ import { CustomError } from '../../lib/CustomError';
 export class LinksService {
   http = inject(HttpClient);
 
-  getAllLinks(): Promise<IAllLinks | CustomError<IAllLinksResponseError>> {
-    return lastValueFrom<IAllLinks | CustomError<IAllLinksResponseError>>(
-      this.http.get<IAllLinks | CustomError<IAllLinksResponseError>>(
-        `${environment.apiUrl}/urls/all`,
-      ),
+  getAllLinks(): Promise<IAllLinksResponse[]> {
+    return lastValueFrom<IAllLinksResponse[]>(
+      this.http.get<IAllLinksResponse[]>(`${environment.apiUrl}/urls/all`),
     );
   }
 

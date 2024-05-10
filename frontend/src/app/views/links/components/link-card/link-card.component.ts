@@ -9,7 +9,11 @@ import { toast } from 'ngx-sonner';
   styleUrl: './link-card.component.css',
 })
 export class LinkCardComponent {
-  @Input({ required: true }) props!: { longUrl: string; shortenedUrl: string };
+  @Input({ required: true }) props!: {
+    longUrl: string;
+    shortenedUrl: string;
+    urlId: string;
+  };
 
   onDeleteClick() {
     toast('Link deleted', {

@@ -40,15 +40,28 @@
     </div>
 
     <div class="flex h-2/4 w-3/5 flex-col items-end overflow-auto">
-      @for (link of links(); track $index) {
-        <app-link-card [props]="link" class="w-full" />
+      @for (link of linksStore.allLinks(); track $index) {
+        <app-link-card
+          [props]="{
+            longUrl: link.longUrl,
+            shortenedUrl: link.shortenedUrl,
+            urlId: link.urlId
+          }"
+          class="w-full"
+        />
       }
-      <a
-        [routerLink]="['all']"
-        [relativeTo]="route"
-        class="text-blue-500 underline underline-offset-2"
-        >Show All Links</a
-      >
+      @if (linksStore.allLinks().length > 0) {
+        <a
+          [routerLink]="['all']"
+          [relativeTo]="route"
+          class="text-blue-500 underline underline-offset-2"
+          >Show All Links</a
+        >
+      } @else {
+        <div class="w-full text-center text-lg font-medium">
+          <p>Oops, you've not generated a link yet 😪</p>
+        </div>
+      }
     </div>
   </div>
 </div>
