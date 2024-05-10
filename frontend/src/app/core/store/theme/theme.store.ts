@@ -4,7 +4,7 @@ import { withDevtools } from '@angular-architects/ngrx-toolkit';
 import { setTheme } from './theme.actions';
 
 const initialState: IThemeState = {
-  currentTheme: 'light',
+  currentTheme: 'dark',
 };
 
 export const ThemeStore = signalStore(
@@ -12,8 +12,8 @@ export const ThemeStore = signalStore(
   withDevtools('theme'),
   withState(initialState),
   withMethods((store) => ({
-    setTheme: (theme: 'light' | 'dark') => {
-      patchState(store, setTheme(theme));
+    setTheme: (payload: 'light' | 'dark') => {
+      patchState(store, setTheme(payload));
     },
   }))
 );

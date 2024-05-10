@@ -1,9 +1,12 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimental';
+import { environment } from '../environments/environment';
+import { ThemeProviderComponent } from './core/components/theme-provider/theme-provider.component';
 import { HlmButtonDirective } from './core/components/ui-button-helm/src/lib/hlm-button.directive';
 import { ThemeStore } from './core/store/theme/theme.store';
-import { ThemeProviderComponent } from './core/components/theme-provider/theme-provider.component';
+import { HlmToasterComponent } from '@spartan-ng/ui-sonner-helm';
 
 @Component({
   selector: 'app-root',
@@ -13,19 +16,16 @@ import { ThemeProviderComponent } from './core/components/theme-provider/theme-p
     RouterOutlet,
     HlmButtonDirective,
     ThemeProviderComponent,
+    AngularQueryDevtools,
+    HlmToasterComponent,
+    ...(environment.enableAngularQueryDevtools ? [AngularQueryDevtools] : []),
   ],
-  providers: [ThemeStore],
+  providers: [],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'frontend';
   themeStore = inject(ThemeStore);
-
-  onBtnClick() {
-    console.log('Button clicked');
-    this.themeStore.setTheme(
-      this.themeStore.currentTheme() === 'light' ? 'dark' : 'light'
-    );
-  }
+  environment = environment;
+  isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 }
