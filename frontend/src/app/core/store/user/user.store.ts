@@ -16,5 +16,5 @@ export const UserStore = signalStore(
     setUserNameAndEmail: (payload: IUserInterface) => {
       patchState(store, setUserNameAndEmail(payload));
     },
-  }))
+  })),
 );

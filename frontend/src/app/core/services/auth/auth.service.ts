@@ -11,6 +11,7 @@ import {
   decodedJwt,
 } from './auth.interface';
 import { Router } from '@angular/router';
+import { injectQueryClient } from '@tanstack/angular-query-experimental';
 
 @Injectable({
   providedIn: 'root',
@@ -19,13 +20,14 @@ export class AuthService {
   http = inject(HttpClient);
   platformId = inject(PLATFORM_ID);
   router = inject(Router);
+  queryClient = injectQueryClient();
 
   signIn(logInDetails: IUserLogInDetails): Promise<ILoginResponse> {
     return lastValueFrom<ILoginResponse>(
       this.http.post<ILoginResponse>(`${environment.apiUrl}/auth/login`, {
         email: logInDetails.email,
         password: logInDetails.password,
-      })
+      }),
     );
   }
 
@@ -36,7 +38,7 @@ export class AuthService {
         password: signUpDetails.password,
         firstname: signUpDetails.firstname,
         lastname: signUpDetails.lastname,
-      })
+      }),
     );
   }
 
@@ -44,6 +46,7 @@ export class AuthService {
     if (!isPlatformBrowser(this.platformId)) return;
     document.cookie =
       'shortln_access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    this.queryClient.removeQueries();
     this.router.navigate(['/sign-in']);
   }
 
@@ -53,10 +56,10 @@ export class AuthService {
     const decodedToken = jwtDecode<decodedJwt | null>(token);
     if (decodedToken) {
       document.cookie = `shortln_access_token=${token}; expires=${new Date(
-        decodedToken.exp * 1000
+        decodedToken.exp * 1000,
       )}; path=/; SameSite=Strict; Secure;`;
     } else {
-      console.error('Token not set - Invalid token');
+      console.log('Token not set - Invalid token');
     }
   }
 

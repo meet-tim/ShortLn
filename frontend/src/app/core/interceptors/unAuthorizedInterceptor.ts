@@ -10,7 +10,7 @@ import { catchError } from 'rxjs';
 
 export function unAuthorizedInterceptor(
   req: HttpRequest<unknown>,
-  next: HttpHandlerFn
+  next: HttpHandlerFn,
 ) {
   const router = inject(Router);
   const location = inject(Location);
@@ -21,6 +21,6 @@ export function unAuthorizedInterceptor(
         router.navigate(['/sign-in']);
       }
       return next(req);
-    })
+    }),
   );
 }
