@@ -16,6 +16,18 @@ export class LinksService {
     );
   }
 
+  filterFunction(link: IAllLinksResponse): {
+    longUrl: string;
+    shortenedUrl: string;
+    urlId: string;
+  } {
+    return {
+      longUrl: link.longUrl,
+      shortenedUrl: link.shortenedUrl,
+      urlId: link.urlId,
+    };
+  }
+
   shortenLink(link: string) {
     return lastValueFrom(
       this.http.post(`${environment.apiUrl}/urls/shorten`, {

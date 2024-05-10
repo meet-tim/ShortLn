@@ -33,11 +33,7 @@ export class AllLinksComponent {
           const fetchedLinks = await this.linksService.getAllLinks();
           return this.ngZone.run(() => {
             this.linksStore.setAllLinks(
-              fetchedLinks.filter((link) => ({
-                longUrl: link.longUrl,
-                shortenedUrl: link.shortenedUrl,
-                urlId: link.urlId,
-              })),
+              fetchedLinks.filter(this.linksService.filterFunction),
             );
             return fetchedLinks;
           });
