@@ -1,4 +1,10 @@
-import { Component, Input, inject } from '@angular/core';
+import {
+  Component,
+  Input,
+  WritableSignal,
+  inject,
+  signal
+} from '@angular/core';
 import { injectMutation } from '@tanstack/angular-query-experimental';
 import { toast } from 'ngx-sonner';
 import { LinksService } from '../../../../core/services/links/links.service';
@@ -16,12 +22,20 @@ export class LinkCardComponent {
     shortenedUrl: string;
     urlId: string;
   };
+  onDeleteAnimatePulse: WritableSignal<boolean> = signal(false);
 
   linksService = inject(LinksService);
   deleteMutation = injectMutation((client) => ({
     mutationFn: (urlId: string) => this.linksService.deleteLink(urlId),
     onSuccess: () => {
       client.invalidateQueries({ queryKey: ['get-all-links'] });
+      toast('Link deleted', {
+        description: 'Link has been deleted successfully',
+        action: {
+          label: 'Ok',
+          onClick: () => null,
+        },
+      });
     },
     onError: (error) => {
       console.log(error);
@@ -29,9 +43,11 @@ export class LinkCardComponent {
   }));
 
   onDeleteClick() {
+    console.log(this.onDeleteAnimatePulse);
+    this.onDeleteAnimatePulse.set(true);
     this.deleteMutation.mutate(this.props.urlId);
-    toast('Link deleted', {
-      description: 'Link has been deleted successfully',
+    toast('Deleting link', {
+      description: 'Link is being deleted',
       action: {
         label: 'Ok',
         onClick: () => null,

@@ -51,7 +51,7 @@
             link of linksStore
               .allLinks()
               .slice(linksStore.allLinks().length - 3);
-            track $index
+            track link.urlId
           ) {
             <app-link-card
               [props]="{
