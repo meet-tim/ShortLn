@@ -13,21 +13,24 @@
 
     <!-- Link section -->
     <div class="w-3/4">
-      <div
+      <form
+        [formGroup]="shortenForm.controls[0]"
         class="flex w-full flex-row overflow-hidden rounded-[42px] border border-dark-01 p-[2px] align-middle dark:bg-zinc-700"
       >
         <input
           type="text"
           placeholder="Enter link here"
           class="grow appearance-none rounded-s-[42px] py-5 pl-24 dark:bg-inherit"
+          [formControl]="shortenForm.controls[0].controls.longUrl"
         />
         <button
           type="button"
           class="w-fit rounded-[42px] bg-blue-500 px-12 py-5 text-white hover:bg-blue-800 dark:text-white"
+          (click)="onAddLinkClick()"
         >
           Shorten Now!
         </button>
-      </div>
+      </form>
       <div class="mt-6 flex flex-col items-center">
         <div class="flex items-center" hlmLabel>
           <hlm-switch

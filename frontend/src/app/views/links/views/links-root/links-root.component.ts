@@ -1,10 +1,13 @@
 import { Component, NgZone, inject } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 import { HlmLabelDirective } from '@spartan-ng/ui-label-helm';
 import { HlmSwitchComponent } from '@spartan-ng/ui-switch-helm';
-import { injectQuery } from '@tanstack/angular-query-experimental';
-import { toast } from 'ngx-sonner';
+import {
+  injectMutation,
+  injectQuery,
+} from '@tanstack/angular-query-experimental';
 import { LinksService } from '../../../../core/services/links/links.service';
 import { LinksStore } from '../../../../core/store/links/links.store';
 import { LinkCardComponent } from '../../components/link-card/link-card.component';
@@ -20,6 +23,7 @@ import { PlaceholderComponent } from '../../components/link-card/placeholder/pla
     LinkCardComponent,
     RouterLink,
     PlaceholderComponent,
+    ReactiveFormsModule,
   ],
   templateUrl: './links-root.component.html',
   styleUrl: './links-root.component.css',
@@ -29,6 +33,13 @@ export class LinksRootComponent {
   route = inject(ActivatedRoute);
   linksService = inject(LinksService);
   linksStore = inject(LinksStore);
+  formBuilder = inject(FormBuilder);
+
+  shortenForm = this.formBuilder.array([
+    this.formBuilder.group({
+      longUrl: [''],
+    }),
+  ]);
 
   links = this.ngZone.runOutsideAngular(() =>
     injectQuery(() => ({
@@ -49,28 +60,26 @@ export class LinksRootComponent {
       },
     })),
   );
+  addLinkMutation = injectMutation((client) => ({
+    mutationFn: (url: string) => this.linksService.addLink(url),
+    onSuccess: () => {
+      client.invalidateQueries({ queryKey: ['get-all-links'] });
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  }));
 
   onCheckboxChange(value: boolean) {
     console.log(value);
   }
 
-  onDeleteClick() {
-    toast('Link deleted', {
-      description: 'Link has been deleted successfully',
-      action: {
-        label: 'Ok',
-        onClick: () => null,
-      },
-    });
-  }
-
-  onCopyClick() {
-    toast('Link copied', {
-      description: 'Link has been copied to clipboard',
-      action: {
-        label: 'Ok',
-        onClick: () => null,
-      },
-    });
+  onAddLinkClick() {
+    if (
+      this.shortenForm.controls[0].value.longUrl === '' ||
+      !this.shortenForm.controls[0].value.longUrl
+    )
+      return;
+    this.addLinkMutation.mutate(this.shortenForm.controls[0].value.longUrl);
   }
 }

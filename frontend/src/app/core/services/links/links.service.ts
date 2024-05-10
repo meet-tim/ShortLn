@@ -10,6 +10,15 @@ import { IAllLinksResponse } from './links.service.interface';
 export class LinksService {
   http = inject(HttpClient);
 
+  addLink(link: string) {
+    console.log(link);
+    return lastValueFrom(
+      this.http.post(`${environment.apiUrl}/urls/shorten`, {
+        url: link,
+      }),
+    );
+  }
+
   getAllLinks(): Promise<IAllLinksResponse[]> {
     return lastValueFrom<IAllLinksResponse[]>(
       this.http.get<IAllLinksResponse[]>(`${environment.apiUrl}/urls/all`),

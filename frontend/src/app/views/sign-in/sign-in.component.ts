@@ -24,7 +24,6 @@ import { AuthService } from '../../core/services/auth/auth.service';
     HlmLabelDirective,
     HlmCheckboxComponent,
     HlmButtonDirective,
-    CommonModule,
     RouterLink,
   ],
   templateUrl: './sign-in.component.html',

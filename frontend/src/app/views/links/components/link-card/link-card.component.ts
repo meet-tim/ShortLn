@@ -3,7 +3,7 @@ import {
   Input,
   WritableSignal,
   inject,
-  signal
+  signal,
 } from '@angular/core';
 import { injectMutation } from '@tanstack/angular-query-experimental';
 import { toast } from 'ngx-sonner';
@@ -43,16 +43,9 @@ export class LinkCardComponent {
   }));
 
   onDeleteClick() {
-    console.log(this.onDeleteAnimatePulse);
+    console.log(this.onDeleteAnimatePulse());
     this.onDeleteAnimatePulse.set(true);
     this.deleteMutation.mutate(this.props.urlId);
-    toast('Deleting link', {
-      description: 'Link is being deleted',
-      action: {
-        label: 'Ok',
-        onClick: () => null,
-      },
-    });
   }
 
   onCopyClick() {
