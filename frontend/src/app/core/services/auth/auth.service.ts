@@ -11,6 +11,7 @@ import {
   decodedJwt,
 } from './auth.interface';
 import { Router } from '@angular/router';
+import { injectQueryClient } from '@tanstack/angular-query-experimental';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +20,7 @@ export class AuthService {
   http = inject(HttpClient);
   platformId = inject(PLATFORM_ID);
   router = inject(Router);
+  queryClient = injectQueryClient();
 
   signIn(logInDetails: IUserLogInDetails): Promise<ILoginResponse> {
     return lastValueFrom<ILoginResponse>(
@@ -44,6 +46,7 @@ export class AuthService {
     if (!isPlatformBrowser(this.platformId)) return;
     document.cookie =
       'shortln_access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    this.queryClient.removeQueries();
     this.router.navigate(['/sign-in']);
   }
 

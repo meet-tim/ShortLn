@@ -8,6 +8,7 @@ import { toast } from 'ngx-sonner';
 import { LinksService } from '../../../../core/services/links/links.service';
 import { LinksStore } from '../../../../core/store/links/links.store';
 import { LinkCardComponent } from '../../components/link-card/link-card.component';
+import { PlaceholderComponent } from '../../components/link-card/placeholder/placeholder.component';
 
 @Component({
   selector: 'app-links-root',
@@ -18,6 +19,7 @@ import { LinkCardComponent } from '../../components/link-card/link-card.componen
     HlmButtonDirective,
     LinkCardComponent,
     RouterLink,
+    PlaceholderComponent,
   ],
   templateUrl: './links-root.component.html',
   styleUrl: './links-root.component.css',
