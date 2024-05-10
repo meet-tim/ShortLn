@@ -22,7 +22,7 @@ export class UrlsController {
     }
     @UseGuards(AuthGuard)
     @Delete(':id')
-    async deleteUrl(@Param('id') id: string): Promise<string>{
+    async deleteUrl(@Param('id') id: string): Promise<any>{
         await this.urlsService.deleteUrl(id);
         return {message:"success"};
     }
