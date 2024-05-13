@@ -10,7 +10,7 @@ export class Url {
   @Prop({ default: uuidv4,type:UUID })
   urlId: string;
   
-  @Prop({ required: true ,unique:true, type:String})
+  @Prop({ required: true , type:String})
   longUrl: string;
  
   @Prop({ required: true ,unique:true, type:String})

@@ -1,4 +1,4 @@
-import { Body, Controller,Delete,Get,Param,Post, UseGuards,Request, Redirect } from '@nestjs/common';
+import { Body, Controller,Delete,Get,Param,Post, UseGuards,Request, Redirect, BadRequestException } from '@nestjs/common';
 import { UrlsService } from './urls.service';
 import { Url } from './schemas/urls.schema';
 import { AuthGuard } from 'src/auth/auth.guard';
@@ -16,7 +16,12 @@ export class UrlsController {
 
     @UseGuards(AuthGuard)
     @Post('shorten')
-    async shortenUrl(@Request() req,@Body('url') url: string): Promise<any> {
+    async shortenUrl(@Request() req,@Body('url') url: string): Promise<string> {
+        const urlRegex = /^(https?:\/\/)/;
+        if (!url.match(urlRegex)) {
+            throw new BadRequestException('URL must start with "https://" or "http://"');
+        }
+
       const shortUrl = await this.urlsService.shortenUrl(url,req.user.email);
       return {url:shortUrl.shortenedUrl};
     }
