@@ -1,0 +1,7 @@
+<app-theme-provider>
+  <router-outlet></router-outlet>
+</app-theme-provider>
+<hlm-toaster *ngIf="isBrowser" [theme]="themeStore.currentTheme()" />
+@if (environment.enableAngularQueryDevtools) {
+  <angular-query-devtools />
+}

@@ -21,14 +21,15 @@ export class UrlsController {
         if (!url.match(urlRegex)) {
             throw new BadRequestException('URL must start with "https://" or "http://"');
         }
+
       const shortUrl = await this.urlsService.shortenUrl(url,req.user.email);
-      return shortUrl.shortenedUrl;
+      return {url:shortUrl.shortenedUrl};
     }
     @UseGuards(AuthGuard)
     @Delete(':id')
-    async deleteUrl(@Param('id') id: string): Promise<string>{
+    async deleteUrl(@Param('id') id: string): Promise<any>{
         await this.urlsService.deleteUrl(id);
-        return "success";
+        return {message:"success"};
     }
 
     @Get(':shortCode')

@@ -1,0 +1,40 @@
+<div class="mt-12 flex w-full flex-col items-center">
+  <div class="flex h-2/4 w-3/5 flex-col items-end overflow-auto">
+    @switch (links.status()) {
+      @case ("pending") {
+        <app-placeholder class="w-full" />
+        <app-placeholder class="w-full" />
+        <app-placeholder class="w-full" />
+      }
+      @case ("success") {
+        @for (link of linksStore.allLinks(); track link.urlId) {
+          <app-link-card
+            [props]="{
+              longUrl: link.longUrl,
+              shortenedUrl: link.shortenedUrl,
+              urlId: link.urlId
+            }"
+            class="w-full"
+          />
+        }
+        @if (!(linksStore.allLinks().length > 0)) {
+          <div class="w-full text-center text-lg font-medium">
+            <p>Oops, you've not generated a link yet 😪</p>
+          </div>
+        }
+      }
+      @default {
+        <div class="w-full text-center text-lg font-medium">
+          <p>Oops, you've not generated a link yet 😪</p>
+        </div>
+      }
+    }
+  </div>
+  <div class="my-8 w-1/3">
+    <button hlmBtn class="w-full bg-blue-500 hover:bg-blue-800">
+      <a routerLink="../" [relativeTo]="route" class="w-full text-white">
+        Generate A Link
+      </a>
+    </button>
+  </div>
+</div>
